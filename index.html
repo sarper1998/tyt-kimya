@@ -1,0 +1,3115 @@
+<!DOCTYPE html>
+<html lang="tr" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="TYT Kimya" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="theme-color" content="#0f172a" id="metaThemeColor" />
+  <title>TYT Kimya – Asit, Baz, Tuz ve Oksit Ezber</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%232563eb'/><path d='M38 20h24v8l-4 4v14l18 30a8 8 0 0 1-6.9 12H30.9A8 8 0 0 1 24 76l18-30V32l-4-4V20z' fill='%23ffffff'/><path d='M31 68h38l4 7a3 3 0 0 1-2.6 4.5H29.6A3 3 0 0 1 27 75l4-7z' fill='%2338bdf8'/></svg>" />
+  <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%232563eb'/><path d='M38 20h24v8l-4 4v14l18 30a8 8 0 0 1-6.9 12H30.9A8 8 0 0 1 24 76l18-30V32l-4-4V20z' fill='%23ffffff'/><path d='M31 68h38l4 7a3 3 0 0 1-2.6 4.5H29.6A8 8 0 0 1 27 75l4-7z' fill='%2338bdf8'/></svg>" />
+  <style>
+    :root, [data-theme="dark"] {
+      --bg: #0b1120;
+      --bg-card: #151f32;
+      --bg-elevated: #1e293b;
+      --bg-hover: #26354d;
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+      --border: #293548;
+      --primary: #3b82f6;
+      --primary-hover: #2563eb;
+      --primary-soft: rgba(59, 130, 246, 0.16);
+      --success: #10b981;
+      --success-bg: rgba(16, 185, 129, 0.16);
+      --success-border: #059669;
+      --danger: #ef4444;
+      --danger-bg: rgba(239, 68, 68, 0.16);
+      --danger-border: #dc2626;
+      --warning: #f59e0b;
+      --warning-bg: rgba(245, 158, 11, 0.16);
+      --info: #38bdf8;
+      --info-bg: rgba(56, 189, 248, 0.15);
+      --shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
+    }
+
+    [data-theme="light"] {
+      --bg: #f1f5f9;
+      --bg-card: #ffffff;
+      --bg-elevated: #f8fafc;
+      --bg-hover: #e2e8f0;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #cbd5e1;
+      --primary: #2563eb;
+      --primary-hover: #1d4ed8;
+      --primary-soft: rgba(37, 99, 235, 0.1);
+      --success: #059669;
+      --success-bg: #d1fae5;
+      --success-border: #10b981;
+      --danger: #dc2626;
+      --danger-bg: #fee2e2;
+      --danger-border: #ef4444;
+      --warning: #d97706;
+      --warning-bg: #fef3c7;
+      --info: #0284c7;
+      --info-bg: #e0f2fe;
+      --shadow: 0 2px 10px rgba(15, 23, 42, 0.06);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    html, body {
+      min-height: 100%;
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      font-size: 16px;
+      line-height: 1.45;
+      overflow-x: hidden;
+    }
+
+    body {
+      padding: env(safe-area-inset-top, 0px) env(safe-area-inset-right, 0px) env(safe-area-inset-bottom, 0px) env(safe-area-inset-left, 0px);
+    }
+
+    .app-container {
+      max-width: 540px;
+      margin: 0 auto;
+      padding: 14px 14px 36px;
+      min-height: 100dvh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Header */
+    .top-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      padding-bottom: 12px;
+      margin-bottom: 12px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .brand-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      background: var(--primary);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 15px;
+      flex-shrink: 0;
+    }
+
+    .brand-title {
+      font-size: 1.05rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+    }
+
+    .brand-subtitle {
+      font-size: 0.76rem;
+      color: var(--text-muted);
+    }
+
+    .top-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .icon-btn {
+      background: var(--bg-card);
+      color: var(--text);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      min-height: 40px;
+      padding: 0 12px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .icon-btn:active {
+      background: var(--bg-hover);
+    }
+
+    /* Screens */
+    .screen {
+      display: none;
+      flex-direction: column;
+      gap: 14px;
+      flex: 1;
+    }
+
+    .screen.active {
+      display: flex;
+    }
+
+    /* Cards & Sections */
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 15px;
+      box-shadow: var(--shadow);
+    }
+
+    .section-title {
+      font-size: 0.82rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--text-muted);
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    /* Stats Dashboard */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+    }
+
+    .stat-box {
+      background: var(--bg-elevated);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 10px 8px;
+      text-align: center;
+    }
+
+    .stat-value {
+      font-size: 1.28rem;
+      font-weight: 800;
+      line-height: 1.2;
+    }
+
+    .stat-label {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      margin-top: 3px;
+      font-weight: 600;
+    }
+
+    .progress-bar-wrap {
+      margin-top: 12px;
+    }
+
+    .progress-bar-labels {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.76rem;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+      font-weight: 600;
+    }
+
+    .progress-track {
+      height: 10px;
+      background: var(--bg-elevated);
+      border-radius: 999px;
+      overflow: hidden;
+      display: flex;
+      border: 1px solid var(--border);
+    }
+
+    .progress-seg-learned { background: var(--success); }
+    .progress-seg-learning { background: var(--info); }
+    .progress-seg-weak { background: var(--danger); }
+
+    /* Mode Selector Buttons */
+    .mode-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 8px;
+    }
+
+    .mode-card {
+      background: var(--bg-elevated);
+      border: 2px solid var(--border);
+      border-radius: 13px;
+      padding: 12px 14px;
+      text-align: left;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      color: var(--text);
+      user-select: none;
+    }
+
+    .mode-card.selected {
+      border-color: var(--primary);
+      background: var(--primary-soft);
+    }
+
+    .mode-card-left {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+    }
+
+    .mode-badge {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 0.9rem;
+      color: var(--primary);
+      flex-shrink: 0;
+    }
+
+    .mode-card.selected .mode-badge {
+      background: var(--primary);
+      color: #fff;
+      border-color: var(--primary);
+    }
+
+    .mode-name {
+      font-weight: 700;
+      font-size: 0.95rem;
+    }
+
+    .mode-desc {
+      font-size: 0.77rem;
+      color: var(--text-muted);
+      margin-top: 1px;
+    }
+
+    /* Filter Chips */
+    .chip-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 8px;
+    }
+
+    .chip-grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+    }
+
+    .chip-btn {
+      background: var(--bg-elevated);
+      border: 2px solid var(--border);
+      color: var(--text);
+      border-radius: 11px;
+      padding: 10px 10px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 6px;
+      user-select: none;
+      min-height: 44px;
+    }
+
+    .chip-btn.full-width {
+      grid-column: 1 / -1;
+    }
+
+    .chip-btn.selected {
+      border-color: var(--primary);
+      background: var(--primary-soft);
+    }
+
+    .chip-count {
+      font-size: 0.75rem;
+      padding: 2px 7px;
+      border-radius: 999px;
+      background: var(--bg-card);
+      color: var(--text-muted);
+      font-weight: 700;
+    }
+
+    .chip-btn.selected .chip-count {
+      background: var(--primary);
+      color: #fff;
+    }
+
+    /* Primary CTA Button */
+    .primary-btn {
+      width: 100%;
+      min-height: 56px;
+      border-radius: 14px;
+      border: none;
+      background: var(--primary);
+      color: #ffffff;
+      font-size: 1.06rem;
+      font-weight: 800;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+      user-select: none;
+    }
+
+    .primary-btn:active {
+      background: var(--primary-hover);
+      transform: translateY(1px);
+    }
+
+    .secondary-btn {
+      width: 100%;
+      min-height: 48px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      background: var(--bg-elevated);
+      color: var(--text);
+      font-size: 0.92rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      user-select: none;
+    }
+
+    .secondary-btn:active {
+      background: var(--bg-hover);
+    }
+
+    .danger-btn {
+      background: var(--danger-bg);
+      color: var(--danger);
+      border: 1px solid var(--danger-border);
+    }
+
+    /* Chemical Subscripts */
+    sub {
+      font-size: 0.74em;
+      vertical-align: sub;
+      line-height: 0;
+      font-weight: 700;
+    }
+
+    .chem-formula {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+      font-weight: 800;
+      letter-spacing: 0.02em;
+    }
+
+    /* Confused Top 5 List */
+    .confused-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .confused-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      padding: 10px 12px;
+      border-radius: 11px;
+      background: var(--bg-elevated);
+      border: 1px solid var(--border);
+    }
+
+    .confused-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      min-width: 0;
+    }
+
+    .confused-formula {
+      font-size: 0.98rem;
+      padding: 4px 8px;
+      border-radius: 8px;
+      background: var(--danger-bg);
+      color: var(--danger);
+      border: 1px solid var(--danger-border);
+      white-space: nowrap;
+    }
+
+    .confused-names {
+      min-width: 0;
+    }
+
+    .confused-chem {
+      font-weight: 700;
+      font-size: 0.88rem;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .confused-common {
+      font-size: 0.76rem;
+      color: var(--text-muted);
+    }
+
+    .confused-stat {
+      font-size: 0.76rem;
+      font-weight: 700;
+      color: var(--danger);
+      white-space: nowrap;
+    }
+
+    /* Quiz Screen */
+    .quiz-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .quiz-progress-text {
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: var(--text-muted);
+    }
+
+    .quiz-score-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 5px 10px;
+      border-radius: 999px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      font-size: 0.82rem;
+      font-weight: 700;
+    }
+
+    .quiz-bar {
+      height: 7px;
+      background: var(--bg-card);
+      border-radius: 999px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+
+    .quiz-bar-fill {
+      height: 100%;
+      background: var(--primary);
+      width: 0%;
+    }
+
+    .question-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 18px 16px;
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .question-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .category-tag {
+      font-size: 0.74rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      padding: 3px 9px;
+      border-radius: 999px;
+      background: var(--bg-elevated);
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+    }
+
+    .status-badge {
+      font-size: 0.74rem;
+      font-weight: 800;
+      padding: 3px 9px;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .status-new {
+      background: var(--bg-elevated);
+      color: var(--text-muted);
+      border: 1px solid var(--border);
+    }
+
+    .status-learning {
+      background: var(--info-bg);
+      color: var(--info);
+      border: 1px solid var(--info);
+    }
+
+    .status-weak {
+      background: var(--danger-bg);
+      color: var(--danger);
+      border: 1px solid var(--danger-border);
+    }
+
+    .status-learned {
+      background: var(--success-bg);
+      color: var(--success);
+      border: 1px solid var(--success-border);
+    }
+
+    .question-highlight {
+      font-size: 1.7rem;
+      font-weight: 800;
+      text-align: center;
+      padding: 12px 10px;
+      background: var(--bg-elevated);
+      border-radius: 13px;
+      border: 1px solid var(--border);
+      word-break: break-word;
+    }
+
+    .question-stem {
+      font-size: 1.08rem;
+      font-weight: 700;
+      text-align: center;
+      color: var(--text);
+    }
+
+    /* Answer Options */
+    .options-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .option-btn {
+      width: 100%;
+      min-height: 58px;
+      padding: 12px 14px;
+      border-radius: 14px;
+      border: 2px solid var(--border);
+      background: var(--bg-card);
+      color: var(--text);
+      font-size: 1rem;
+      font-weight: 700;
+      text-align: left;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      box-shadow: var(--shadow);
+      user-select: none;
+    }
+
+    .option-btn:active:not(:disabled) {
+      background: var(--bg-hover);
+    }
+
+    .option-letter {
+      width: 32px;
+      height: 32px;
+      border-radius: 9px;
+      background: var(--bg-elevated);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+      font-weight: 800;
+      color: var(--text-muted);
+      flex-shrink: 0;
+    }
+
+    .option-text {
+      flex: 1;
+      line-height: 1.3;
+    }
+
+    .option-btn.correct {
+      background: var(--success-bg);
+      border-color: var(--success-border);
+      color: var(--text);
+    }
+
+    .option-btn.correct .option-letter {
+      background: var(--success);
+      border-color: var(--success);
+      color: #ffffff;
+    }
+
+    .option-btn.wrong {
+      background: var(--danger-bg);
+      border-color: var(--danger-border);
+      color: var(--text);
+    }
+
+    .option-btn.wrong .option-letter {
+      background: var(--danger);
+      border-color: var(--danger);
+      color: #ffffff;
+    }
+
+    .option-btn:disabled {
+      cursor: default;
+    }
+
+    /* Feedback / Explanation Card */
+    .feedback-box {
+      display: none;
+      border-radius: 16px;
+      padding: 15px;
+      border: 2px solid var(--border);
+      background: var(--bg-card);
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .feedback-box.visible {
+      display: flex;
+    }
+
+    .feedback-box.is-correct {
+      border-color: var(--success-border);
+      background: var(--success-bg);
+    }
+
+    .feedback-box.is-wrong {
+      border-color: var(--danger-border);
+      background: var(--danger-bg);
+    }
+
+    .feedback-title {
+      font-size: 1rem;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .feedback-title.correct-text { color: var(--success); }
+    .feedback-title.wrong-text { color: var(--danger); }
+
+    .substance-summary-table {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 10px 12px;
+      display: grid;
+      grid-template-columns: 112px 1fr;
+      row-gap: 7px;
+      column-gap: 8px;
+      font-size: 0.9rem;
+    }
+
+    .sum-label {
+      color: var(--text-muted);
+      font-weight: 600;
+    }
+
+    .sum-val {
+      font-weight: 800;
+      color: var(--text);
+    }
+
+    .memory-tip {
+      font-size: 0.83rem;
+      color: var(--text);
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 9px 11px;
+      line-height: 1.4;
+    }
+
+    /* List Screen */
+    .filter-row {
+      display: flex;
+      gap: 6px;
+      overflow-x: auto;
+      padding-bottom: 4px;
+    }
+
+    .small-pill {
+      padding: 7px 12px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: var(--bg-card);
+      color: var(--text);
+      font-size: 0.8rem;
+      font-weight: 700;
+      white-space: nowrap;
+      cursor: pointer;
+    }
+
+    .small-pill.active {
+      background: var(--primary);
+      border-color: var(--primary);
+      color: #fff;
+    }
+
+    .search-input {
+      width: 100%;
+      min-height: 44px;
+      padding: 8px 13px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      background: var(--bg-card);
+      color: var(--text);
+      font-size: 0.94rem;
+    }
+
+    .substance-list {
+      display: flex;
+      flex-direction: column;
+      gap: 9px;
+    }
+
+    .substance-row {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 12px 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .substance-row-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 8px;
+    }
+
+    .substance-row-formula {
+      font-size: 1.12rem;
+      padding: 3px 9px;
+      border-radius: 8px;
+      background: var(--bg-elevated);
+      border: 1px solid var(--border);
+      display: inline-block;
+      margin-bottom: 4px;
+    }
+
+    .substance-row-chem {
+      font-size: 0.96rem;
+      font-weight: 800;
+    }
+
+    .substance-row-common {
+      font-size: 0.83rem;
+      color: var(--text-muted);
+      font-weight: 600;
+    }
+
+    .substance-row-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 6px;
+      padding-top: 6px;
+      border-top: 1px solid var(--border);
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    .type-dots {
+      display: flex;
+      gap: 5px;
+      flex-wrap: wrap;
+    }
+
+    .type-dot {
+      padding: 2px 7px;
+      border-radius: 6px;
+      background: var(--bg-elevated);
+      border: 1px solid var(--border);
+      font-size: 0.7rem;
+      font-weight: 700;
+    }
+
+    .type-dot.done {
+      background: var(--success-bg);
+      color: var(--success);
+      border-color: var(--success-border);
+    }
+
+    /* Modal */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.68);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 18px;
+      z-index: 100;
+    }
+
+    .modal-backdrop.open {
+      display: flex;
+    }
+
+    .modal-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      max-width: 420px;
+      width: 100%;
+      padding: 18px;
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .modal-title {
+      font-size: 1.05rem;
+      font-weight: 800;
+    }
+
+    .modal-text {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      line-height: 1.45;
+    }
+
+    .modal-actions {
+      display: flex;
+      gap: 10px;
+      margin-top: 4px;
+    }
+
+    .toast {
+      position: fixed;
+      bottom: 22px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--text);
+      color: var(--bg);
+      padding: 10px 16px;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      box-shadow: var(--shadow);
+      z-index: 200;
+      display: none;
+    }
+
+    .toast.show {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <div class="app-container">
+    <!-- Top Header -->
+    <header class="top-bar">
+      <div class="brand" id="brandHomeBtn" title="Ana Menüye Dön">
+        <div class="brand-icon">Kim</div>
+        <div>
+          <div class="brand-title">TYT Kimya Ezber</div>
+          <div class="brand-subtitle">Asit • Baz • Tuz • Oksit</div>
+        </div>
+      </div>
+      <div class="top-actions">
+        <button type="button" class="icon-btn" id="openListBtn" title="Bütün Maddeler">
+          <span>📋 Maddeler (44)</span>
+        </button>
+        <button type="button" class="icon-btn" id="themeToggleBtn" title="Tema Değiştir" aria-label="Tema Değiştir">
+          <span id="themeIcon">☀️</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- ================= SCREEN 1: HOME MENU ================= -->
+    <main class="screen active" id="homeScreen">
+      <!-- Statistics Overview Card -->
+      <section class="card">
+        <div class="section-title">
+          <span>📊 Öğrenme İstatistikleri</span>
+          <span id="streakBadge">🔥 0 Günlük Seri</span>
+        </div>
+        <div class="stats-grid">
+          <div class="stat-box">
+            <div class="stat-value" id="statTotalItems">44</div>
+            <div class="stat-label">Toplam Madde</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-value" style="color: var(--success);" id="statLearnedItems">0</div>
+            <div class="stat-label">Öğrenilen</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-value" style="color: var(--warning);" id="statUnlearnedItems">44</div>
+            <div class="stat-label">Öğrenilmeyen</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-value" style="color: var(--info);" id="statAccuracy">%0</div>
+            <div class="stat-label">Doğru Yüzdesi</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-value" id="statTodayCount">0</div>
+            <div class="stat-label">Bugün Çözülen</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-value" id="statWeakCount" style="color: var(--danger);">0</div>
+            <div class="stat-label">Zayıf Madde</div>
+          </div>
+        </div>
+
+        <div class="progress-bar-wrap">
+          <div class="progress-bar-labels">
+            <span id="progressDetailText">0 Öğrenildi • 0 Öğreniliyor • 0 Zayıf • 44 Yeni</span>
+            <span id="progressPercentText">%0</span>
+          </div>
+          <div class="progress-track">
+            <div class="progress-seg-learned" id="barLearned" style="width: 0%"></div>
+            <div class="progress-seg-learning" id="barLearning" style="width: 0%"></div>
+            <div class="progress-seg-weak" id="barWeak" style="width: 0%"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Study Mode Selection (A, B, C, D) -->
+      <section class="card">
+        <div class="section-title">
+          <span>1. Soru Modu Seç</span>
+        </div>
+        <div class="mode-grid" id="questionModeGrid">
+          <button type="button" class="mode-card selected" data-qmode="mixed">
+            <div class="mode-card-left">
+              <div class="mode-badge">D</div>
+              <div>
+                <div class="mode-name">Karma Ezber Modu (Önerilen)</div>
+                <div class="mode-desc">Formül, kimyasal ad, yaygın ad ve oksit türü karışık</div>
+              </div>
+            </div>
+          </button>
+
+          <button type="button" class="mode-card" data-qmode="formula_to_name">
+            <div class="mode-card-left">
+              <div class="mode-badge">A</div>
+              <div>
+                <div class="mode-name">Formülden İsmi Bul</div>
+                <div class="mode-desc">Örn: H<sub>2</sub>SO<sub>4</sub> hangi maddedir? → Sülfürik asit</div>
+              </div>
+            </div>
+          </button>
+
+          <button type="button" class="mode-card" data-qmode="name_to_formula">
+            <div class="mode-card-left">
+              <div class="mode-badge">B</div>
+              <div>
+                <div class="mode-name">İsimden Formülü Bul</div>
+                <div class="mode-desc">Örn: Kezzabın formülü hangisidir? → HNO<sub>3</sub></div>
+              </div>
+            </div>
+          </button>
+
+          <button type="button" class="mode-card" data-qmode="common_to_chemical">
+            <div class="mode-card-left">
+              <div class="mode-badge">C</div>
+              <div>
+                <div class="mode-name">Yaygın İsimden Kimyasal Adı Bul</div>
+                <div class="mode-desc">Örn: Sönmüş kireç → Kalsiyum hidroksit (+ Oksit türü)</div>
+              </div>
+            </div>
+          </button>
+        </div>
+      </section>
+
+      <!-- Scope & Question Count Selection -->
+      <section class="card">
+        <div class="section-title">
+          <span>2. Çalışma Kapsamı</span>
+        </div>
+        <div class="chip-grid" id="scopeGrid">
+          <button type="button" class="chip-btn selected full-width" data-scope="all">
+            <span>🌐 Tüm Maddeler</span>
+            <span class="chip-count" id="countScopeAll">44</span>
+          </button>
+          <button type="button" class="chip-btn" data-scope="asit">
+            <span>🧪 Sadece Asitler</span>
+            <span class="chip-count" id="countScopeAsit">13</span>
+          </button>
+          <button type="button" class="chip-btn" data-scope="baz">
+            <span>🧼 Sadece Bazlar</span>
+            <span class="chip-count" id="countScopeBaz">7</span>
+          </button>
+          <button type="button" class="chip-btn" data-scope="tuz">
+            <span>🧂 Sadece Tuzlar</span>
+            <span class="chip-count" id="countScopeTuz">15</span>
+          </button>
+          <button type="button" class="chip-btn" data-scope="oksit">
+            <span>🔥 Sadece Oksitler</span>
+            <span class="chip-count" id="countScopeOksit">9</span>
+          </button>
+          <button type="button" class="chip-btn" data-scope="wrong">
+            <span>⚠️ Yanlış Yaptıklarım</span>
+            <span class="chip-count" id="countScopeWrong">0</span>
+          </button>
+          <button type="button" class="chip-btn" data-scope="unlearned">
+            <span>🎯 Öğrenemediklerim</span>
+            <span class="chip-count" id="countScopeUnlearned">44</span>
+          </button>
+        </div>
+
+        <div class="section-title" style="margin-top: 14px;">
+          <span>3. Tekrar Uzunluğu</span>
+        </div>
+        <div class="chip-grid-3" id="lengthGrid">
+          <button type="button" class="chip-btn" data-length="10">
+            <span>⚡ Hızlı (10)</span>
+          </button>
+          <button type="button" class="chip-btn selected" data-length="20">
+            <span>📝 Normal (20)</span>
+          </button>
+          <button type="button" class="chip-btn" data-length="full">
+            <span>🏆 Tam Tekrar</span>
+          </button>
+        </div>
+
+        <div style="margin-top: 14px;">
+          <button type="button" class="primary-btn" id="startQuizBtn">
+            <span>🚀 Çalışmayı Başlat</span>
+          </button>
+        </div>
+      </section>
+
+      <!-- Top 5 Most Confused Items -->
+      <section class="card">
+        <div class="section-title">
+          <span>❗ En Çok Karıştırılan 5 Madde</span>
+        </div>
+        <div class="confused-list" id="confusedListContainer"></div>
+      </section>
+
+      <!-- Data Management: List, Backup, Restore, Reset -->
+      <section class="card">
+        <div class="section-title">
+          <span>⚙️ Veri Saklama ve Yedekleme</span>
+        </div>
+        <div class="chip-grid">
+          <button type="button" class="secondary-btn" id="exportJsonBtn">
+            <span>💾 Yedek İndir (JSON)</span>
+          </button>
+          <button type="button" class="secondary-btn" id="importJsonBtn">
+            <span>📂 Yedek Yükle</span>
+          </button>
+          <input type="file" id="importFileInput" accept=".json,application/json" style="display: none;" />
+          <button type="button" class="secondary-btn" id="openListBottomBtn">
+            <span>📚 Tüm Maddeleri Gör</span>
+          </button>
+          <button type="button" class="secondary-btn danger-btn" id="resetStatsBtn">
+            <span>🗑️ İstatistikleri Sıfırla</span>
+          </button>
+        </div>
+      </section>
+    </main>
+
+    <!-- ================= SCREEN 2: QUIZ SCREEN ================= -->
+    <main class="screen" id="quizScreen">
+      <div class="quiz-header">
+        <button type="button" class="icon-btn" id="quitQuizBtn">
+          <span>← Ana Menü</span>
+        </button>
+        <div class="quiz-progress-text" id="quizCounterText">Soru 1 / 20</div>
+        <div class="quiz-score-pill">
+          <span style="color: var(--success);" id="quizSessionCorrect">✓ 0</span>
+          <span style="color: var(--danger);" id="quizSessionWrong">✗ 0</span>
+        </div>
+      </div>
+
+      <div class="quiz-bar">
+        <div class="quiz-bar-fill" id="quizProgressBar"></div>
+      </div>
+
+      <section class="question-card">
+        <div class="question-meta">
+          <span class="category-tag" id="qCategoryTag">ASİT</span>
+          <span class="status-badge status-new" id="qStatusBadge">Yeni</span>
+        </div>
+        <div class="question-highlight" id="qHighlightBox">H<sub>2</sub>SO<sub>4</sub></div>
+        <div class="question-stem" id="qStemText">Yukarıdaki formül hangi maddeye aittir?</div>
+      </section>
+
+      <!-- 5 Answer Choices -->
+      <div class="options-list" id="optionsContainer"></div>
+
+      <!-- Explanation & Full Substance Details (Revealed immediately upon answer/skip) -->
+      <section class="feedback-box" id="feedbackBox">
+        <div class="feedback-title" id="feedbackTitle">
+          <span id="feedbackStatusText">✓ Doğru Cevap!</span>
+          <span id="feedbackLevelUpdate" style="font-size: 0.78rem;"></span>
+        </div>
+        <div class="substance-summary-table" id="feedbackTable"></div>
+        <div class="memory-tip" id="feedbackTip"></div>
+      </section>
+
+      <!-- Bottom Action Button: Skip (before answer) OR Next Question (after answer) -->
+      <div style="margin-top: auto; padding-top: 6px;">
+        <button type="button" class="secondary-btn" id="skipQuestionBtn">
+          <span>⏭️ Soruyu Geç (Yanlış Sayılır)</span>
+        </button>
+        <button type="button" class="primary-btn" id="nextQuestionBtn" style="display: none;">
+          <span>Sonraki Soru →</span>
+        </button>
+      </div>
+    </main>
+
+    <!-- ================= SCREEN 3: SESSION SUMMARY SCREEN ================= -->
+    <main class="screen" id="summaryScreen">
+      <section class="card" style="text-align: center; padding: 24px 16px;">
+        <div style="font-size: 2.4rem; margin-bottom: 6px;" id="summaryEmoji">🎯</div>
+        <h2 style="font-size: 1.35rem; font-weight: 800; margin-bottom: 4px;">Çalışma Tamamlandı!</h2>
+        <p style="font-size: 0.88rem; color: var(--text-muted);" id="summarySubtitle">Bu oturumdaki performans özeti</p>
+
+        <div class="stats-grid" style="margin-top: 16px;">
+          <div class="stat-box">
+            <div class="stat-value" style="color: var(--success);" id="sumCorrect">0</div>
+            <div class="stat-label">Doğru</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-value" style="color: var(--danger);" id="sumWrong">0</div>
+            <div class="stat-label">Yanlış / Boş</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-value" style="color: var(--info);" id="sumRate">%0</div>
+            <div class="stat-label">Başarı</div>
+          </div>
+        </div>
+
+        <div style="margin-top: 18px; display: flex; flex-direction: column; gap: 10px;">
+          <button type="button" class="primary-btn" id="repeatSessionBtn">
+            <span>🔄 Aynı Ayarlarla Tekrar Çöz</span>
+          </button>
+          <button type="button" class="secondary-btn" id="practiceSessionMistakesBtn" style="display: none;">
+            <span>⚠️ Bu Testteki Yanlışlarımı Çöz</span>
+          </button>
+          <button type="button" class="secondary-btn" id="backHomeFromSummaryBtn">
+            <span>🏠 Ana Menüye Dön</span>
+          </button>
+        </div>
+      </section>
+
+      <section class="card" id="sessionMistakesCard" style="display: none;">
+        <div class="section-title">
+          <span>Bu Oturumda Yanlış Yapılan Maddeler</span>
+        </div>
+        <div class="confused-list" id="sessionMistakesList"></div>
+      </section>
+    </main>
+
+    <!-- ================= SCREEN 4: ALL SUBSTANCES LIST SCREEN ================= -->
+    <main class="screen" id="listScreen">
+      <div class="quiz-header">
+        <button type="button" class="icon-btn" id="closeListBtn">
+          <span>← Ana Menü</span>
+        </button>
+        <div style="font-weight: 800; font-size: 0.98rem;">Kimya Veri Tabanı (44 Madde)</div>
+      </div>
+
+      <input type="search" class="search-input" id="listSearchInput" placeholder="Formül, kimyasal ad veya yaygın ad ara..." />
+
+      <div class="filter-row" id="listCategoryFilter">
+        <button type="button" class="small-pill active" data-cat="all">Tümü (44)</button>
+        <button type="button" class="small-pill" data-cat="asit">Asitler (13)</button>
+        <button type="button" class="small-pill" data-cat="baz">Bazlar (7)</button>
+        <button type="button" class="small-pill" data-cat="tuz">Tuzlar (15)</button>
+        <button type="button" class="small-pill" data-cat="oksit">Oksitler (9)</button>
+      </div>
+
+      <div class="filter-row" id="listStatusFilter">
+        <button type="button" class="small-pill active" data-st="all">Tüm Durumlar</button>
+        <button type="button" class="small-pill" data-st="weak">Zayıf</button>
+        <button type="button" class="small-pill" data-st="learning">Öğreniliyor</button>
+        <button type="button" class="small-pill" data-st="new">Yeni</button>
+        <button type="button" class="small-pill" data-st="learned">Öğrenildi</button>
+      </div>
+
+      <div class="substance-list" id="allSubstancesContainer"></div>
+    </main>
+  </div>
+
+  <!-- Confirmation Modal for Reset -->
+  <div class="modal-backdrop" id="resetModal">
+    <div class="modal-card">
+      <div class="modal-title">⚠️ İstatistikler Sıfırlansın mı?</div>
+      <div class="modal-text">
+        Tüm maddelerdeki öğrenme düzeyleriniz, doğru/yanlış sayılarınız ve günlük çalışma seriniz kalıcı olarak sıfırlanacaktır. Bu işlem geri alınamaz.
+      </div>
+      <div class="modal-actions">
+        <button type="button" class="secondary-btn" id="cancelResetBtn">Vazgeç</button>
+        <button type="button" class="secondary-btn danger-btn" id="confirmResetBtn">Evet, Sıfırla</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Backup / Restore Modal -->
+  <div class="modal-backdrop" id="restoreModal">
+    <div class="modal-card">
+      <div class="modal-title">📂 Yedekleme ve Geri Yükleme</div>
+      <div class="modal-text">
+        İlerlemenizi <b>.json</b> dosyası olarak yükleyebilir, yedek metnini panoya kopyalayabilir veya aşağıya yapıştırarak geri yükleyebilirsiniz.
+      </div>
+      <div class="modal-actions" style="margin-top: 0;">
+        <button type="button" class="secondary-btn" id="selectJsonFileBtn">📁 Dosya Seç</button>
+        <button type="button" class="secondary-btn" id="copyJsonTextBtn">📋 Yedeği Kopyala</button>
+      </div>
+      <textarea id="pasteJsonArea" rows="4" class="search-input" style="font-family: monospace; font-size: 0.78rem;" placeholder="Geri yüklemek için JSON yedek metnini buraya yapıştırın..."></textarea>
+      <div class="modal-actions">
+        <button type="button" class="secondary-btn" id="cancelRestoreBtn">Kapat</button>
+        <button type="button" class="primary-btn" style="min-height: 48px; font-size: 0.92rem;" id="applyPasteRestoreBtn">Yedeği Yükle</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast" id="toastMsg"></div>
+
+  <script>
+    /********************************************************************
+     * 1. TYT KİMYA VERİ TABANI (44 EKSİKSİZ MADDE)
+     ********************************************************************/
+    const SUBSTANCES = [
+      // ==================== ASİTLER (13) ====================
+      {
+        id: "hcl",
+        category: "asit",
+        formula: "HCl",
+        chemicalName: "Hidroklorik asit",
+        commonName: "Tuz ruhu",
+        genitiveCommon: "Tuz ruhunun",
+        genitiveChemical: "Hidroklorik asidin",
+        clusters: ["inorg_acid", "cl_group", "strong_acid"],
+        tip: "Ev temizliğinde kireç/pas çözücü olarak kullanılan kuvvetli asittir; yapısındaki Klor (Cl) sofra tuzundan aklına gelsin: Tuz ruhu."
+      },
+      {
+        id: "h2so4",
+        category: "asit",
+        formula: "H₂SO₄",
+        chemicalName: "Sülfürik asit",
+        commonName: "Zaç yağı",
+        genitiveCommon: "Zaç yağının",
+        genitiveChemical: "Sülfürik asidin",
+        clusters: ["inorg_acid", "oxy_acid", "s_acid", "strong_acid"],
+        tip: "Akü asidi ve nem çekici olarak bilinir. Kükürt (S) ve 4 oksijen içerir: Sülfürik asit (Zaç yağı)."
+      },
+      {
+        id: "hno3",
+        category: "asit",
+        formula: "HNO₃",
+        chemicalName: "Nitrik asit",
+        commonName: "Kezzap",
+        genitiveCommon: "Kezzabın",
+        genitiveChemical: "Nitrik asidin",
+        clusters: ["inorg_acid", "oxy_acid", "n_acid", "strong_acid"],
+        tip: "Azot (N) ve 3 oksijen içerir (Nitrat kökü). Çok kuvvetli ve aşındırıcı bir asittir: Kezzap."
+      },
+      {
+        id: "ch3cooh",
+        category: "asit",
+        formula: "CH₃COOH",
+        chemicalName: "Asetik asit",
+        commonName: "Sirke asidi",
+        altCommonNames: ["Sirke asidi", "Sirke ruhu"],
+        genitiveCommon: "Sirke asidinin",
+        genitiveChemical: "Asetik asidin",
+        clusters: ["org_acid", "cooh_acid", "acetate_group"],
+        tip: "Yapısında -COOH (karboksil) grubu bulunduran 2 karbonlu zayıf organik asittir: Sirke asidi."
+      },
+      {
+        id: "hcooh",
+        category: "asit",
+        formula: "HCOOH",
+        chemicalName: "Formik asit",
+        commonName: "Karınca asidi",
+        genitiveCommon: "Karınca asidinin",
+        genitiveChemical: "Formik asidin",
+        clusters: ["org_acid", "cooh_acid"],
+        tip: "Latince 'formica' karınca demektir; karınca salgısında ve ısırgan otunda bulunan tek karbonlu organik asittir."
+      },
+      {
+        id: "h3po4",
+        category: "asit",
+        formula: "H₃PO₄",
+        chemicalName: "Fosforik asit",
+        commonName: "Fosfor asidi",
+        genitiveCommon: "Fosfor asidinin",
+        genitiveChemical: "Fosforik asidin",
+        clusters: ["inorg_acid", "oxy_acid"],
+        tip: "Merkezinde P (Fosfor) atomu bulunur; kolalı içeceklerde ve fosfatlı gübre üretiminde kullanılır."
+      },
+      {
+        id: "h2co3",
+        category: "asit",
+        formula: "H₂CO₃",
+        chemicalName: "Karbonik asit",
+        commonName: null,
+        genitiveCommon: null,
+        genitiveChemical: "Karbonik asidin",
+        clusters: ["inorg_acid", "oxy_acid", "carbonate_group"],
+        tip: "CO₂ gazının suda çözünmesiyle oluşan zayıf asittir (CO₃²⁻ karbonat kökünden hatırla)."
+      },
+      {
+        id: "hf",
+        category: "asit",
+        formula: "HF",
+        chemicalName: "Hidroflorik asit",
+        commonName: null,
+        genitiveCommon: null,
+        genitiveChemical: "Hidroflorik asidin",
+        clusters: ["inorg_acid"],
+        tip: "Flor (F) içerir; cama etki eden (camı aşındıran) tek asittir, bu yüzden cam kapta saklanamaz."
+      },
+      {
+        id: "h2so3",
+        category: "asit",
+        formula: "H₂SO₃",
+        chemicalName: "Sülfüroz asit",
+        commonName: null,
+        genitiveCommon: null,
+        genitiveChemical: "Sülfüroz asidin",
+        clusters: ["inorg_acid", "oxy_acid", "s_acid"],
+        tip: "H₂SO₄ (Sülfürik asit) ile karıştırma! Bir oksijeni eksiktir (SO₂ + H₂O): Sülfüroz asit."
+      },
+      {
+        id: "hno2",
+        category: "asit",
+        formula: "HNO₂",
+        chemicalName: "Nitröz asit",
+        commonName: null,
+        genitiveCommon: null,
+        genitiveChemical: "Nitröz asidin",
+        clusters: ["inorg_acid", "oxy_acid", "n_acid"],
+        tip: "HNO₃ (Nitrik asit) ile karıştırma! Bir oksijeni eksiktir (NO₂⁻ nitrit kökü): Nitröz asit."
+      },
+      {
+        id: "c6h8o7",
+        category: "asit",
+        formula: "C₆H₈O₇",
+        chemicalName: "Sitrik asit",
+        commonName: "Limon asidi",
+        genitiveCommon: "Limon asidinin",
+        genitiveChemical: "Sitrik asidin",
+        clusters: ["org_acid", "bio_acid"],
+        tip: "Turunçgillerde (narenciye/limon) bulunur. C₆H₈O₇ (7 oksijenli): Sitrik asit / Limon asidi."
+      },
+      {
+        id: "c3h6o3",
+        category: "asit",
+        formula: "C₃H₆O₃",
+        chemicalName: "Laktik asit",
+        commonName: "Süt asidi",
+        genitiveCommon: "Süt asidinin",
+        genitiveChemical: "Laktik asidin",
+        clusters: ["org_acid", "bio_acid"],
+        tip: "Laktozdan (süt şekeri) hatırla! Yoğurtta bulunan ve yorgunluk veren 3 karbonlu (C₃H₆O₃) asittir: Süt asidi."
+      },
+      {
+        id: "c6h8o6",
+        category: "asit",
+        formula: "C₆H₈O₆",
+        chemicalName: "Askorbik asit",
+        commonName: "C vitamini",
+        genitiveCommon: "C vitamininin",
+        genitiveChemical: "Askorbik asidin",
+        clusters: ["org_acid", "bio_acid"],
+        tip: "Sitrik asitten (C₆H₈O₇) 1 oksijen eksiktir (C₆H₈O₆). İskorbüt hastalığını önleyen C vitaminidir."
+      },
+
+      // ==================== BAZLAR (7) ====================
+      {
+        id: "naoh",
+        category: "baz",
+        formula: "NaOH",
+        chemicalName: "Sodyum hidroksit",
+        commonName: "Sud kostik",
+        genitiveCommon: "Sud kostiğin",
+        genitiveChemical: "Sodyum hidroksitin",
+        clusters: ["hydroxide_base", "kostik", "na_group"],
+        tip: "Sodyum → Sud kostik. Kuvvetli bazdır; sert (beyaz) sabun yapımında ve lavabo açıcı olarak kullanılır."
+      },
+      {
+        id: "koh",
+        category: "baz",
+        formula: "KOH",
+        chemicalName: "Potasyum hidroksit",
+        commonName: "Potas kostik",
+        genitiveCommon: "Potas kostiğin",
+        genitiveChemical: "Potasyum hidroksitin",
+        clusters: ["hydroxide_base", "kostik", "k_group"],
+        tip: "Potasyum → Potas kostik. Kuvvetli bazdır; yumuşak (Arap) sabunu yapımında kullanılır."
+      },
+      {
+        id: "caoh2",
+        category: "baz",
+        formula: "Ca(OH)₂",
+        chemicalName: "Kalsiyum hidroksit",
+        commonName: "Sönmüş kireç",
+        genitiveCommon: "Sönmüş kirecin",
+        genitiveChemical: "Kalsiyum hidroksitin",
+        clusters: ["hydroxide_base", "kirec_group", "divalent_base"],
+        tip: "Sönmemiş kirece (CaO) su katılıp söndürülmesiyle oluşur; yapısında OH olduğu için Sönmüş kireçtir."
+      },
+      {
+        id: "nh3",
+        category: "baz",
+        formula: "NH₃",
+        chemicalName: "Amonyak",
+        commonName: null,
+        genitiveCommon: null,
+        genitiveChemical: "Amonyağın",
+        clusters: ["nh_group", "n_acid"],
+        tip: "Yapısında OH bulunmamasına rağmen suda çözününce OH⁻ iyonu oluşturan susuz zayıf bazdır!"
+      },
+      {
+        id: "mgoh2",
+        category: "baz",
+        formula: "Mg(OH)₂",
+        chemicalName: "Magnezyum hidroksit",
+        commonName: "Magnezya sütü",
+        genitiveCommon: "Magnezya sütünün",
+        genitiveChemical: "Magnezyum hidroksitin",
+        clusters: ["hydroxide_base", "divalent_base"],
+        tip: "Mide asidini (HCl) nötrleştirmek için mide ilaçlarında kullanılan süspansiyondur: Magnezya sütü."
+      },
+      {
+        id: "aloh3",
+        category: "baz",
+        formula: "Al(OH)₃",
+        chemicalName: "Alüminyum hidroksit",
+        commonName: null,
+        genitiveCommon: null,
+        genitiveChemical: "Alüminyum hidroksitin",
+        clusters: ["hydroxide_base", "amfoter_group"],
+        tip: "3 değerlikli Al³⁺ katyonu içerir: Al(OH)₃. Amfoter hidroksit özelliği gösterir."
+      },
+      {
+        id: "baoh2",
+        category: "baz",
+        formula: "Ba(OH)₂",
+        chemicalName: "Baryum hidroksit",
+        commonName: null,
+        genitiveCommon: null,
+        genitiveChemical: "Baryum hidroksitin",
+        clusters: ["hydroxide_base", "divalent_base"],
+        tip: "2A grubu elementi Baryumun (Ba²⁺) kuvvetli bazıdır: Ba(OH)₂."
+      },
+
+      // ==================== TUZLAR (15) ====================
+      {
+        id: "nacl",
+        category: "tuz",
+        formula: "NaCl",
+        chemicalName: "Sodyum klorür",
+        commonName: "Sofra tuzu",
+        altCommonNames: ["Sofra tuzu", "Yemek tuzu"],
+        genitiveCommon: "Sofra tuzunun",
+        genitiveChemical: "Sodyum klorürün",
+        clusters: ["na_group", "cl_group"],
+        tip: "HCl ve NaOH'un nötralleşmesiyle oluşan nötr tuzdur: Sofra tuzu (Yemek tuzu)."
+      },
+      {
+        id: "nahco3",
+        category: "tuz",
+        formula: "NaHCO₃",
+        chemicalName: "Sodyum hidrojen karbonat",
+        altChemicalNames: ["Sodyum hidrojen karbonat", "Sodyum bikarbonat"],
+        commonName: "Yemek sodası",
+        altCommonNames: ["Yemek sodası", "Kabartma tozu"],
+        genitiveCommon: "Yemek sodasının",
+        genitiveChemical: "Sodyum hidrojen karbonatın",
+        clusters: ["na_group", "soda_group", "carbonate_group"],
+        tip: "Ortasında H (hidrojen/bikarbonat) vardır! Mutfakta kabartma tozu olarak kullanılır: Yemek sodası."
+      },
+      {
+        id: "na2co3",
+        category: "tuz",
+        formula: "Na₂CO₃",
+        chemicalName: "Sodyum karbonat",
+        commonName: "Çamaşır sodası",
+        genitiveCommon: "Çamaşır sodasının",
+        genitiveChemical: "Sodyum karbonatın",
+        clusters: ["na_group", "soda_group", "carbonate_group"],
+        tip: "Hidrojeni yoktur (Na₂CO₃). Sert suları yumuşatmada ve temizlikte kullanılır: Çamaşır sodası."
+      },
+      {
+        id: "caco3",
+        category: "tuz",
+        formula: "CaCO₃",
+        chemicalName: "Kalsiyum karbonat",
+        commonName: "Kireç taşı, mermer, tebeşir",
+        altCommonNames: ["Kireç taşı, mermer, tebeşir", "Kireç taşı", "Mermer", "Tebeşir"],
+        genitiveCommon: "Kireç taşının (mermer / tebeşir)",
+        genitiveChemical: "Kalsiyum karbonatın",
+        clusters: ["kirec_group", "carbonate_group"],
+        tip: "Kireç ailesinin karbonatlı (CO₃) tuzudur: Kireç taşı, mermer ve tebeşir aynı bileşiktir (CaCO₃)."
+      },
+      {
+        id: "caso4_2h2o",
+        category: "tuz",
+        formula: "CaSO₄·2H₂O",
+        chemicalName: "Kalsiyum sülfat dihidrat",
+        commonName: "Alçı taşı",
+        genitiveCommon: "Alçı taşının",
+        genitiveChemical: "Kalsiyum sülfat dihidratın",
+        clusters: ["hydrate_salt", "alci_group"],
+        tip: "2 molekül kristal suyu (dihidrat) içerir; doğadan çıkarılan ham kayaç halidir: Alçı taşı."
+      },
+      {
+        id: "caso4_halfh2o",
+        category: "tuz",
+        formula: "CaSO₄·½H₂O",
+        chemicalName: "Kalsiyum sülfat hemihidrat",
+        commonName: "Alçı",
+        genitiveCommon: "Alçının",
+        genitiveChemical: "Kalsiyum sülfat hemihidratın",
+        clusters: ["hydrate_salt", "alci_group"],
+        tip: "½ (yarım = hemi) su içerir; alçı taşının ısıtılmasıyla elde edilen sıva/kırık Alçısıdır."
+      },
+      {
+        id: "cuso4_5h2o",
+        category: "tuz",
+        formula: "CuSO₄·5H₂O",
+        chemicalName: "Bakır(II) sülfat pentahidrat",
+        commonName: "Göz taşı",
+        genitiveCommon: "Göz taşının",
+        genitiveChemical: "Bakır(II) sülfat pentahidratın",
+        clusters: ["hydrate_salt"],
+        tip: "Bakır (Cu) ve 5 su (pentahidrat) içerir; nazar boncuğu gibi mavi renklidir: Göz taşı."
+      },
+      {
+        id: "kno3",
+        category: "tuz",
+        formula: "KNO₃",
+        chemicalName: "Potasyum nitrat",
+        commonName: "Güherçile",
+        altCommonNames: ["Güherçile", "Hint güherçilesi"],
+        genitiveCommon: "Güherçilenin",
+        genitiveChemical: "Potasyum nitratın",
+        clusters: ["nitrate_salt", "k_group"],
+        tip: "K (Potasyum) nitrat → Güherçile (Hint güherçilesi). Barut ve gübre yapımında kullanılır."
+      },
+      {
+        id: "nano3",
+        category: "tuz",
+        formula: "NaNO₃",
+        chemicalName: "Sodyum nitrat",
+        commonName: "Şili güherçilesi",
+        genitiveCommon: "Şili güherçilesinin",
+        genitiveChemical: "Sodyum nitratın",
+        clusters: ["nitrate_salt", "na_group"],
+        tip: "Na (Sodyum) nitrat → Şili güherçilesi (Potasyum nitrat olan Güherçile ile karıştırma!)."
+      },
+      {
+        id: "nh4cl",
+        category: "tuz",
+        formula: "NH₄Cl",
+        chemicalName: "Amonyum klorür",
+        commonName: "Nişadır",
+        genitiveCommon: "Nişadırın",
+        genitiveChemical: "Amonyum klorürün",
+        clusters: ["nh_group", "cl_group"],
+        tip: "NH₃ ve HCl'den oluşan asidik tuzdur; kuru pillerde ve metal kalaylamada kullanılır: Nişadır."
+      },
+      {
+        id: "naclo",
+        category: "tuz",
+        formula: "NaClO",
+        chemicalName: "Sodyum hipoklorit",
+        commonName: "Çamaşır suyunun etkin maddesi",
+        altCommonNames: ["Çamaşır suyunun etkin maddesi", "Çamaşır suyu"],
+        genitiveCommon: "Çamaşır suyunun etkin maddesinin",
+        genitiveChemical: "Sodyum hipokloritin",
+        clusters: ["na_group", "cl_group", "soda_group"],
+        tip: "NaClO (Sodyum hipoklorit) ağartıcı ve mikrop öldürücü bazik tuzdur: Çamaşır suyunun etkin maddesi."
+      },
+      {
+        id: "mgso4_7h2o",
+        category: "tuz",
+        formula: "MgSO₄·7H₂O",
+        chemicalName: "Magnezyum sülfat heptahidrat",
+        commonName: "İngiliz tuzu",
+        altCommonNames: ["İngiliz tuzu", "Epsom tuzu"],
+        genitiveCommon: "İngiliz tuzunun",
+        genitiveChemical: "Magnezyum sülfat heptahidratın",
+        clusters: ["hydrate_salt"],
+        tip: "Mg ve 7 su (heptahidrat) içerir; tıpta müshil ve banyo tuzu olarak bilinir: İngiliz tuzu."
+      },
+      {
+        id: "na2b4o7_10h2o",
+        category: "tuz",
+        formula: "Na₂B₄O₇·10H₂O",
+        chemicalName: "Sodyum tetraborat dekahidrat",
+        commonName: "Boraks",
+        genitiveCommon: "Boraksın",
+        genitiveChemical: "Sodyum tetraborat dekahidratın",
+        clusters: ["hydrate_salt", "na_group"],
+        tip: "Yapısında 4 Bor (tetraborat) ve 10 su (dekahidrat) bulunur: Boraks."
+      },
+      {
+        id: "nh4no3",
+        category: "tuz",
+        formula: "NH₄NO₃",
+        chemicalName: "Amonyum nitrat",
+        commonName: null,
+        genitiveCommon: null,
+        genitiveChemical: "Amonyum nitratın",
+        clusters: ["nh_group", "nitrate_salt"],
+        tip: "Hem amonyum (NH₄⁺) hem nitrat (NO₃⁻) içerir; azotça çok zengin bir tarım gübresidir."
+      },
+      {
+        id: "ch3coona",
+        category: "tuz",
+        formula: "CH₃COONa",
+        chemicalName: "Sodyum asetat",
+        commonName: null,
+        genitiveCommon: null,
+        genitiveChemical: "Sodyum asetatın",
+        clusters: ["acetate_group", "na_group"],
+        tip: "Asetik asit (CH₃COOH) ve NaOH tepkimesinden oluşan bazik tuzdur."
+      },
+
+      // ==================== OKSİTLER (9) ====================
+      {
+        id: "cao",
+        category: "oksit",
+        formula: "CaO",
+        chemicalName: "Kalsiyum oksit",
+        commonName: "Sönmemiş kireç",
+        genitiveCommon: "Sönmemiş kirecin",
+        genitiveChemical: "Kalsiyum oksitin",
+        oxideType: "Bazik",
+        clusters: ["kirec_group", "metal_oxide"],
+        tip: "Yapısında H ve OH yoktur → Sönmemiş kireç. Metal (Ca) oksidi olduğu için Bazik oksittir."
+      },
+      {
+        id: "co2",
+        category: "oksit",
+        formula: "CO₂",
+        chemicalName: "Karbondioksit",
+        commonName: null,
+        genitiveCommon: null,
+        genitiveChemical: "Karbondioksitin",
+        oxideType: "Asidik",
+        clusters: ["c_oxide", "nonmetal_oxide"],
+        tip: "Ametal (C) oksijence zengindir (O sayısı > ametal sayısı) → Asidik oksit."
+      },
+      {
+        id: "so2",
+        category: "oksit",
+        formula: "SO₂",
+        chemicalName: "Kükürt dioksit",
+        commonName: null,
+        genitiveCommon: null,
+        genitiveChemical: "Kükürt dioksitin",
+        oxideType: "Asidik",
+        clusters: ["s_oxide", "nonmetal_oxide"],
+        tip: "Ametal (S) + 2 oksijen (oksijence zengin) → Asidik oksit. Asit yağmurlarına yol açar."
+      },
+      {
+        id: "so3",
+        category: "oksit",
+        formula: "SO₃",
+        chemicalName: "Kükürt trioksit",
+        commonName: null,
+        genitiveCommon: null,
+        genitiveChemical: "Kükürt trioksitin",
+        oxideType: "Asidik",
+        clusters: ["s_oxide", "nonmetal_oxide"],
+        tip: "Ametal (S) + 3 oksijen → Asidik oksit (Suyla tepkimeye girince H₂SO₄ oluşturur)."
+      },
+      {
+        id: "no2",
+        category: "oksit",
+        formula: "NO₂",
+        chemicalName: "Azot dioksit",
+        commonName: null,
+        genitiveCommon: null,
+        genitiveChemical: "Azot dioksitin",
+        oxideType: "Asidik",
+        clusters: ["n_oxide", "nonmetal_oxide"],
+        tip: "Ametal (N) + 2 oksijen (oksijence zengin) → Asidik oksit."
+      },
+      {
+        id: "al2o3",
+        category: "oksit",
+        formula: "Al₂O₃",
+        chemicalName: "Alüminyum oksit",
+        commonName: null,
+        genitiveCommon: null,
+        genitiveChemical: "Alüminyum oksitin",
+        oxideType: "Amfoter",
+        clusters: ["amfoter_group", "metal_oxide"],
+        tip: "Alüminyum (Al) amfoter metaldir; hem asitlerle hem kuvvetli bazlarla tepkime verir → Amfoter oksit."
+      },
+      {
+        id: "zno",
+        category: "oksit",
+        formula: "ZnO",
+        chemicalName: "Çinko oksit",
+        commonName: null,
+        genitiveCommon: null,
+        genitiveChemical: "Çinko oksitin",
+        oxideType: "Amfoter",
+        clusters: ["amfoter_group", "metal_oxide"],
+        tip: "Çinko (Zn) amfoter metaldir ('Al sana pabuç zannetme çarık be') → Amfoter oksit."
+      },
+      {
+        id: "co",
+        category: "oksit",
+        formula: "CO",
+        chemicalName: "Karbon monoksit",
+        commonName: null,
+        genitiveCommon: null,
+        genitiveChemical: "Karbon monoksitin",
+        oxideType: "Nötr",
+        clusters: ["c_oxide", "nonmetal_oxide"],
+        tip: "Ametal (C) + tek oksijen (oksijen sayısı ≤ ametal sayısı) → Nötr oksit (Asit ve bazla tepkime vermez)."
+      },
+      {
+        id: "no",
+        category: "oksit",
+        formula: "NO",
+        chemicalName: "Azot monoksit",
+        commonName: null,
+        genitiveCommon: null,
+        genitiveChemical: "Azot monoksitin",
+        oxideType: "Nötr",
+        clusters: ["n_oxide", "nonmetal_oxide"],
+        tip: "Ametal (N) + tek oksijen (oksijen sayısı ≤ ametal sayısı) → Nötr oksit."
+      }
+    ];
+
+    const CATEGORY_LABELS = {
+      asit: "Asit",
+      baz: "Baz",
+      tuz: "Tuz",
+      oksit: "Oksit"
+    };
+
+    const STATUS_LABELS = {
+      new: "Yeni",
+      learning: "Öğreniliyor",
+      weak: "Zayıf",
+      learned: "Öğrenildi"
+    };
+
+    const OXIDE_CLASSES = [
+      { key: "Asidik", label: "Asidik oksit" },
+      { key: "Bazik", label: "Bazik oksit" },
+      { key: "Amfoter", label: "Amfoter oksit" },
+      { key: "Nötr", label: "Nötr oksit" },
+      { key: "Peroksit", label: "Peroksit" }
+    ];
+
+    /********************************************************************
+     * 2. YARDIMCI FONKSİYONLAR (ALT İNDİS FORMATLAMA & RASTGELE)
+     ********************************************************************/
+    const SUBSCRIPT_MAP = {
+      "₀": "0", "₁": "1", "₂": "2", "₃": "3", "₄": "4",
+      "₅": "5", "₆": "6", "₇": "7", "₈": "8", "₉": "9"
+    };
+
+    function formatFormulaHTML(formulaStr) {
+      if (!formulaStr) return "";
+      return formulaStr.replace(/[₀₁₂₃₄₅₆₇₈₉]/g, ch => `<sub>${SUBSCRIPT_MAP[ch]}</sub>`);
+    }
+
+    function escapeHTML(str) {
+      if (!str) return "";
+      return String(str)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;");
+    }
+
+    function shuffleArray(arr) {
+      const copy = arr.slice();
+      for (let i = copy.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        const tmp = copy[i];
+        copy[i] = copy[j];
+        copy[j] = tmp;
+      }
+      return copy;
+    }
+
+    function getLocalDateKey(dateObj = new Date()) {
+      const y = dateObj.getFullYear();
+      const m = String(dateObj.getMonth() + 1).padStart(2, "0");
+      const d = String(dateObj.getDate()).padStart(2, "0");
+      return `${y}-${m}-${d}`;
+    }
+
+    function getYesterdayDateKey() {
+      const d = new Date();
+      d.setDate(d.getDate() - 1);
+      return getLocalDateKey(d);
+    }
+
+    function showToast(msg) {
+      const el = document.getElementById("toastMsg");
+      el.textContent = msg;
+      el.classList.add("show");
+      clearTimeout(showToast._timer);
+      showToast._timer = setTimeout(() => {
+        el.classList.remove("show");
+      }, 2400);
+    }
+
+    /********************************************************************
+     * 3. YEREL DEPOLAMA (LOCALSTORAGE) VE AKILLI EZBER VERİ MODELİ
+     ********************************************************************/
+    const STORAGE_KEY = "tyt_kimya_ezber_v1";
+
+    function createDefaultItemProgress() {
+      return {
+        status: "new", // 'new' | 'learning' | 'weak' | 'learned'
+        correct: 0,
+        wrong: 0,
+        streak: 0,
+        lastAskedAt: 0,
+        nextReviewAt: 0,
+        byType: {
+          formula_to_name: { correct: 0, wrong: 0, streak: 0 },
+          name_to_formula: { correct: 0, wrong: 0, streak: 0 },
+          common_to_chemical: { correct: 0, wrong: 0, streak: 0 },
+          oxide_type: { correct: 0, wrong: 0, streak: 0 }
+        }
+      };
+    }
+
+    function createDefaultState() {
+      const items = {};
+      for (const sub of SUBSTANCES) {
+        items[sub.id] = createDefaultItemProgress();
+      }
+      return {
+        version: 1,
+        theme: "dark",
+        totalCorrect: 0,
+        totalWrong: 0,
+        todayDate: getLocalDateKey(),
+        todaySolved: 0,
+        streakDays: 0,
+        lastStudyDate: null,
+        items
+      };
+    }
+
+    let appState = loadState();
+
+    function loadState() {
+      try {
+        const raw = localStorage.getItem(STORAGE_KEY);
+        if (!raw) return createDefaultState();
+        const parsed = JSON.parse(raw);
+        const def = createDefaultState();
+        const merged = {
+          ...def,
+          ...parsed,
+          items: { ...def.items }
+        };
+        if (parsed.items && typeof parsed.items === "object") {
+          for (const sub of SUBSTANCES) {
+            if (parsed.items[sub.id]) {
+              const pItem = parsed.items[sub.id];
+              const dItem = createDefaultItemProgress();
+              merged.items[sub.id] = {
+                ...dItem,
+                ...pItem,
+                byType: {
+                  ...dItem.byType,
+                  ...(pItem.byType || {})
+                }
+              };
+            }
+          }
+        }
+        // Check daily rollover
+        const today = getLocalDateKey();
+        if (merged.todayDate !== today) {
+          merged.todayDate = today;
+          merged.todaySolved = 0;
+        }
+        // Validate streak continuity
+        const yesterday = getYesterdayDateKey();
+        if (merged.lastStudyDate && merged.lastStudyDate !== today && merged.lastStudyDate !== yesterday) {
+          merged.streakDays = 0;
+        }
+        return merged;
+      } catch (err) {
+        return createDefaultState();
+      }
+    }
+
+    function saveState() {
+      try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(appState));
+      } catch (err) {
+        // Fallback if private mode blocks storage
+      }
+    }
+
+    // Hangi soru türleri ilgili madde için geçerlidir?
+    function getApplicableTypesForSubstance(sub) {
+      const types = ["formula_to_name", "name_to_formula"];
+      if (sub.commonName) {
+        types.push("common_to_chemical");
+      }
+      if (sub.category === "oksit") {
+        types.push("oxide_type");
+      }
+      return types;
+    }
+
+    // Kaç farklı soru türünde doğru cevaplanmış?
+    function getMasteredTypeCount(sub, prog) {
+      const applicable = getApplicableTypesForSubstance(sub);
+      let count = 0;
+      for (const t of applicable) {
+        if (prog.byType[t] && prog.byType[t].streak >= 1) {
+          count++;
+        }
+      }
+      return count;
+    }
+
+    // Aralıklı tekrar (Spaced Repetition) süre hesabı (ms)
+    function computeNextIntervalMs(status, streak) {
+      const MINUTE = 60 * 1000;
+      const HOUR = 60 * MINUTE;
+      const DAY = 24 * HOUR;
+      if (status === "weak") return 1 * MINUTE;
+      if (status === "learning") {
+        if (streak <= 1) return 10 * MINUTE;
+        return 2 * HOUR;
+      }
+      if (status === "learned") {
+        if (streak <= 3) return 12 * HOUR;
+        if (streak === 4) return 1 * DAY;
+        if (streak === 5) return 3 * DAY;
+        if (streak === 6) return 7 * DAY;
+        return 14 * DAY;
+      }
+      return 0;
+    }
+
+    function recordAnswer(subId, qType, isCorrect) {
+      const sub = SUBSTANCES.find(s => s.id === subId);
+      const prog = appState.items[subId] || createDefaultItemProgress();
+      const prevStatus = prog.status;
+      const now = Date.now();
+
+      // Günlük istatistik & seri güncellemesi
+      const today = getLocalDateKey();
+      if (appState.todayDate !== today) {
+        appState.todayDate = today;
+        appState.todaySolved = 0;
+      }
+      appState.todaySolved += 1;
+
+      if (appState.lastStudyDate !== today) {
+        const yesterday = getYesterdayDateKey();
+        if (appState.lastStudyDate === yesterday) {
+          appState.streakDays = (appState.streakDays || 0) + 1;
+        } else {
+          appState.streakDays = 1;
+        }
+        appState.lastStudyDate = today;
+      }
+
+      if (!prog.byType[qType]) {
+        prog.byType[qType] = { correct: 0, wrong: 0, streak: 0 };
+      }
+
+      prog.lastAskedAt = now;
+
+      if (isCorrect) {
+        appState.totalCorrect += 1;
+        prog.correct += 1;
+        prog.streak += 1;
+        prog.byType[qType].correct += 1;
+        prog.byType[qType].streak += 1;
+
+        const masteredTypes = getMasteredTypeCount(sub, prog);
+        // Öğrenildi olması için: arka arkaya en az 3 doğru VE en az 2 farklı soru türünde doğru cevaplanmış olmalı
+        if (prog.streak >= 3 && masteredTypes >= 2) {
+          prog.status = "learned";
+        } else if (prog.status === "weak" && prog.streak < 2) {
+          // Zayıf maddeden çıkmak için arka arkaya 2 doğru gerekir
+          prog.status = "weak";
+        } else {
+          prog.status = "learning";
+        }
+      } else {
+        appState.totalWrong += 1;
+        prog.wrong += 1;
+        prog.streak = 0;
+        prog.byType[qType].wrong += 1;
+        prog.byType[qType].streak = 0;
+        // Yanlış yapılan bir madde doğrudan Zayıf seviyesine düşer
+        prog.status = "weak";
+      }
+
+      prog.nextReviewAt = now + computeNextIntervalMs(prog.status, prog.streak);
+      appState.items[subId] = prog;
+      saveState();
+
+      return {
+        prevStatus,
+        newStatus: prog.status,
+        streak: prog.streak,
+        masteredTypes: getMasteredTypeCount(sub, prog)
+      };
+    }
+
+    /********************************************************************
+     * 4. AKILLI SORU SEÇİMİ VE BENZER ŞIK (ÇELDİRİCİ) ALGORİTMASI
+     ********************************************************************/
+    let selectedQMode = "mixed"; // 'mixed' | 'formula_to_name' | 'name_to_formula' | 'common_to_chemical'
+    let selectedScope = "all";   // 'all' | 'asit' | 'baz' | 'tuz' | 'oksit' | 'wrong' | 'unlearned'
+    let selectedLength = "20";   // '10' | '20' | 'full'
+
+    let currentSession = null;
+
+    function getFilteredSubstances(scope, qMode) {
+      let pool = SUBSTANCES.slice();
+
+      if (scope === "asit" || scope === "baz" || scope === "tuz" || scope === "oksit") {
+        pool = pool.filter(s => s.category === scope);
+      } else if (scope === "wrong") {
+        pool = pool.filter(s => {
+          const p = appState.items[s.id];
+          return p && (p.status === "weak" || (p.wrong > 0 && p.status !== "learned"));
+        });
+        if (pool.length === 0) {
+          pool = SUBSTANCES.filter(s => (appState.items[s.id]?.wrong || 0) > 0);
+        }
+      } else if (scope === "unlearned") {
+        pool = pool.filter(s => appState.items[s.id]?.status !== "learned");
+      }
+
+      // C modunda (Yaygın isimden kimyasal ad) eğer Tam Tekrar değilse yaygın adı olan veya oksit olanlara öncelik ver
+      if (qMode === "common_to_chemical" && selectedLength !== "full") {
+        const withCommonOrOxide = pool.filter(s => s.commonName !== null || s.category === "oksit");
+        if (withCommonOrOxide.length >= 5) {
+          pool = withCommonOrOxide;
+        }
+      }
+
+      return pool;
+    }
+
+    // Aralıklı tekrar ve öğrenme düzeyine göre ağırlık hesapla
+    function computeSelectionWeight(sub, recentIds) {
+      const prog = appState.items[sub.id];
+      const now = Date.now();
+      const isDue = now >= (prog.nextReviewAt || 0);
+
+      let weight = 20;
+      if (prog.status === "weak") {
+        weight = 110 + Math.min(prog.wrong * 12, 60);
+      } else if (prog.status === "learning") {
+        weight = isDue ? 65 : 28;
+      } else if (prog.status === "new") {
+        weight = 48;
+      } else if (prog.status === "learned") {
+        // Arka arkaya doğru yapılan maddelerin sorulma sıklığını azalt
+        weight = isDue ? 32 : Math.max(2, 12 - prog.streak * 2);
+      }
+
+      // Aynı sorunun arka arkaya tekrarlanmasını engelle
+      if (recentIds.includes(sub.id)) {
+        weight *= 0.02;
+      }
+
+      return weight;
+    }
+
+    function pickWeightedSubstance(pool, recentIds) {
+      const nonRecent = pool.filter(s => !recentIds.includes(s.id));
+      const candidates = nonRecent.length > 0 ? nonRecent : pool;
+
+      const weights = candidates.map(s => computeSelectionWeight(s, recentIds));
+      const totalWeight = weights.reduce((acc, w) => acc + w, 0);
+      let r = Math.random() * totalWeight;
+      for (let i = 0; i < candidates.length; i++) {
+        r -= weights[i];
+        if (r <= 0) return candidates[i];
+      }
+      return candidates[candidates.length - 1];
+    }
+
+    // İki madde arasındaki kimyasal/görsel benzerlik puanı (çeldirici seçimi için)
+    function similarityScore(target, candidate) {
+      if (target.id === candidate.id) return -999;
+      let score = 0;
+      if (target.category === candidate.category) score += 35;
+
+      const tClusters = target.clusters || [];
+      const cClusters = candidate.clusters || [];
+      for (const cl of tClusters) {
+        if (cClusters.includes(cl)) score += 30;
+      }
+
+      return score + Math.random() * 14;
+    }
+
+    function pickSimilarDistractors(target, candidatePool, count, valueExtractor, targetValue) {
+      const scored = candidatePool
+        .filter(c => c.id !== target.id)
+        .map(c => ({ item: c, val: valueExtractor(c), score: similarityScore(target, c) }))
+        .filter(x => x.val && x.val !== targetValue)
+        .sort((a, b) => b.score - a.score);
+
+      const chosen = [];
+      const usedValues = new Set([targetValue]);
+
+      for (const entry of scored) {
+        if (chosen.length >= count) break;
+        if (!usedValues.has(entry.val)) {
+          usedValues.add(entry.val);
+          chosen.push(entry.item);
+        }
+      }
+      return chosen;
+    }
+
+    // Madde ve seçilen moda göre hangi soru türünün sorulacağını belirle
+    function chooseQuestionTypeForSubstance(sub, mode) {
+      const prog = appState.items[sub.id];
+
+      if (mode === "formula_to_name") return "formula_to_name";
+      if (mode === "name_to_formula") return "name_to_formula";
+      if (mode === "common_to_chemical") {
+        if (sub.commonName) return "common_to_chemical";
+        if (sub.category === "oksit") return "oxide_type";
+        return "formula_to_name";
+      }
+
+      // Karma mod ('mixed'): Öğrenildi olabilmesi için henüz doğru yapılmamış soru türlerine öncelik ver
+      const applicable = getApplicableTypesForSubstance(sub);
+      const unmastered = applicable.filter(t => (prog.byType[t]?.streak || 0) === 0);
+      if (unmastered.length > 0) {
+        return unmastered[Math.floor(Math.random() * unmastered.length)];
+      }
+      return applicable[Math.floor(Math.random() * applicable.length)];
+    }
+
+    // Tek doğru cevaplı, 5 şıklı soru üretici
+    function buildQuestion(sub, mode) {
+      const qType = chooseQuestionTypeForSubstance(sub, mode);
+
+      // 1) FORMÜLDEN İSMİ BUL
+      if (qType === "formula_to_name") {
+        // Yaygın adı olanlarda bazen yaygın adını da formülden sorabiliriz, ancak netlik için soru kökünde belirtiriz
+        const askCommon = sub.commonName && mode === "mixed" && Math.random() < 0.25;
+        if (askCommon) {
+          const correctVal = sub.commonName;
+          const distractors = pickSimilarDistractors(
+            sub,
+            SUBSTANCES.filter(s => s.commonName !== null),
+            4,
+            s => s.commonName,
+            correctVal
+          );
+          const options = shuffleArray([
+            { text: correctVal, isHTML: false, isCorrect: true },
+            ...distractors.map(d => ({ text: d.commonName, isHTML: false, isCorrect: false }))
+          ]);
+          return {
+            sub,
+            qType: "formula_to_name",
+            highlightHTML: `<span class="chem-formula">${formatFormulaHTML(sub.formula)}</span>`,
+            stem: `${sub.formula} bileşiğinin yaygın adı hangisidir?`,
+            options
+          };
+        } else {
+          const correctVal = sub.chemicalName;
+          const distractors = pickSimilarDistractors(
+            sub,
+            SUBSTANCES,
+            4,
+            s => s.chemicalName,
+            correctVal
+          );
+          const options = shuffleArray([
+            { text: correctVal, isHTML: false, isCorrect: true },
+            ...distractors.map(d => ({ text: d.chemicalName, isHTML: false, isCorrect: false }))
+          ]);
+          return {
+            sub,
+            qType: "formula_to_name",
+            highlightHTML: `<span class="chem-formula">${formatFormulaHTML(sub.formula)}</span>`,
+            stem: `${sub.formula} hangi maddedir?`,
+            options
+          };
+        }
+      }
+
+      // 2) İSİMDEN FORMÜLÜ BUL
+      if (qType === "name_to_formula") {
+        const useCommon = sub.commonName && Math.random() < 0.65;
+        let displayTitle = sub.chemicalName;
+        let stemText = `${sub.genitiveChemical} formülü hangisidir?`;
+
+        if (useCommon) {
+          if (sub.id === "caco3") {
+            const variants = [
+              { title: "Kireç taşı", stem: "Kireç taşının formülü hangisidir?" },
+              { title: "Mermer", stem: "Mermerin kimyasal formülü hangisidir?" },
+              { title: "Tebeşir", stem: "Tebeşirin kimyasal formülü hangisidir?" },
+              { title: "Kireç taşı, mermer, tebeşir", stem: "Kireç taşının (mermer / tebeşir) formülü hangisidir?" }
+            ];
+            const v = variants[Math.floor(Math.random() * variants.length)];
+            displayTitle = v.title;
+            stemText = v.stem;
+          } else {
+            displayTitle = sub.commonName;
+            stemText = `${sub.genitiveCommon} formülü hangisidir?`;
+          }
+        }
+
+        const correctVal = sub.formula;
+        const distractors = pickSimilarDistractors(
+          sub,
+          SUBSTANCES,
+          4,
+          s => s.formula,
+          correctVal
+        );
+        const options = shuffleArray([
+          { text: `<span class="chem-formula">${formatFormulaHTML(correctVal)}</span>`, isHTML: true, isCorrect: true },
+          ...distractors.map(d => ({
+            text: `<span class="chem-formula">${formatFormulaHTML(d.formula)}</span>`,
+            isHTML: true,
+            isCorrect: false
+          }))
+        ]);
+
+        return {
+          sub,
+          qType: "name_to_formula",
+          highlightHTML: escapeHTML(displayTitle),
+          stem: stemText,
+          options
+        };
+      }
+
+      // 3) YAYGIN İSİMDEN KİMYASAL ADI BUL
+      if (qType === "common_to_chemical" && sub.commonName) {
+        let displayTitle = sub.commonName;
+        let stemText = `${sub.genitiveCommon} kimyasal adı hangisidir?`;
+
+        if (sub.id === "caco3") {
+          const variants = [
+            { title: "Kireç taşı", stem: "Kireç taşının kimyasal adı hangisidir?" },
+            { title: "Mermer", stem: "Mermerin kimyasal adı hangisidir?" },
+            { title: "Tebeşir", stem: "Tebeşirin kimyasal adı hangisidir?" },
+            { title: "Kireç taşı, mermer, tebeşir", stem: "Kireç taşının (mermer / tebeşir) kimyasal adı hangisidir?" }
+          ];
+          const v = variants[Math.floor(Math.random() * variants.length)];
+          displayTitle = v.title;
+          stemText = v.stem;
+        }
+
+        const correctVal = sub.chemicalName;
+        const distractors = pickSimilarDistractors(
+          sub,
+          SUBSTANCES,
+          4,
+          s => s.chemicalName,
+          correctVal
+        );
+        const options = shuffleArray([
+          { text: correctVal, isHTML: false, isCorrect: true },
+          ...distractors.map(d => ({ text: d.chemicalName, isHTML: false, isCorrect: false }))
+        ]);
+
+        return {
+          sub,
+          qType: "common_to_chemical",
+          highlightHTML: escapeHTML(displayTitle),
+          stem: stemText,
+          options
+        };
+      }
+
+      // 4) OKSİT TÜRÜNÜ BULMA SORULARI (Oksitler için özel)
+      if (qType === "oxide_type" && sub.category === "oksit") {
+        const askReverse = Math.random() < 0.45;
+        const nonSameTypeOxides = SUBSTANCES.filter(
+          s => s.category === "oksit" && s.oxideType !== sub.oxideType
+        );
+
+        if (askReverse && nonSameTypeOxides.length >= 4) {
+          // "Aşağıdaki oksitlerden hangisi <Asidik/Bazik/Amfoter/Nötr> özellik gösterir?"
+          const pickedWrong = shuffleArray(nonSameTypeOxides).slice(0, 4);
+          const formatOxideOption = item =>
+            `<span class="chem-formula">${formatFormulaHTML(item.formula)}</span> (${escapeHTML(item.chemicalName)})`;
+
+          const options = shuffleArray([
+            { text: formatOxideOption(sub), isHTML: true, isCorrect: true },
+            ...pickedWrong.map(d => ({ text: formatOxideOption(d), isHTML: true, isCorrect: false }))
+          ]);
+
+          return {
+            sub,
+            qType: "oxide_type",
+            highlightHTML: `${escapeHTML(sub.oxideType)} Oksit`,
+            stem: `Aşağıdaki maddelerden hangisi ${sub.oxideType.toLowerCase()} bir oksittir?`,
+            options
+          };
+        } else {
+          // "<Formül> (<Kimyasal Ad>) bileşiğinin oksit türü hangisidir?" -> 5 oksit sınıfı
+          const options = shuffleArray(
+            OXIDE_CLASSES.map(oc => ({
+              text: oc.label,
+              isHTML: false,
+              isCorrect: oc.key === sub.oxideType
+            }))
+          );
+
+          return {
+            sub,
+            qType: "oxide_type",
+            highlightHTML: `<span class="chem-formula">${formatFormulaHTML(sub.formula)}</span> <span style="font-size: 1rem; font-weight: 600; color: var(--text-muted);">(${escapeHTML(sub.chemicalName)})</span>`,
+            stem: `${sub.formula} (${sub.chemicalName}) bileşiğinin oksit türü hangisidir?`,
+            options
+          };
+        }
+      }
+
+      // Fallback
+      return buildQuestion(sub, "formula_to_name");
+    }
+
+    /********************************************************************
+     * 5. EKRAN YÖNETİMİ VE ARAYÜZ GÜNCELLEMELERİ
+     ********************************************************************/
+    function showScreen(screenId) {
+      document.querySelectorAll(".screen").forEach(el => {
+        el.classList.toggle("active", el.id === screenId);
+      });
+      window.scrollTo({ top: 0, behavior: "instant" });
+    }
+
+    function applyTheme(theme) {
+      appState.theme = theme === "light" ? "light" : "dark";
+      document.documentElement.setAttribute("data-theme", appState.theme);
+      document.getElementById("themeIcon").textContent = appState.theme === "dark" ? "☀️" : "🌙";
+      document.getElementById("metaThemeColor").setAttribute(
+        "content",
+        appState.theme === "dark" ? "#0b1120" : "#f1f5f9"
+      );
+      saveState();
+    }
+
+    function updateHomeDashboard() {
+      const total = SUBSTANCES.length;
+      let learned = 0;
+      let learning = 0;
+      let weak = 0;
+      let newCount = 0;
+      let wrongScopeCount = 0;
+
+      for (const sub of SUBSTANCES) {
+        const p = appState.items[sub.id];
+        if (!p || p.status === "new") newCount++;
+        else if (p.status === "learned") learned++;
+        else if (p.status === "learning") learning++;
+        else if (p.status === "weak") weak++;
+
+        if (p && (p.status === "weak" || (p.wrong > 0 && p.status !== "learned"))) {
+          wrongScopeCount++;
+        }
+      }
+
+      const unlearned = total - learned;
+      const totalAns = appState.totalCorrect + appState.totalWrong;
+      const accuracy = totalAns > 0 ? Math.round((appState.totalCorrect / totalAns) * 100) : 0;
+
+      document.getElementById("statTotalItems").textContent = total;
+      document.getElementById("statLearnedItems").textContent = learned;
+      document.getElementById("statUnlearnedItems").textContent = unlearned;
+      document.getElementById("statAccuracy").textContent = `%${accuracy}`;
+      document.getElementById("statTodayCount").textContent = appState.todaySolved || 0;
+      document.getElementById("statWeakCount").textContent = weak;
+      document.getElementById("streakBadge").textContent = `🔥 ${appState.streakDays || 0} Günlük Seri`;
+
+      const learnedPct = Math.round((learned / total) * 100);
+      const learningPct = Math.round((learning / total) * 100);
+      const weakPct = Math.round((weak / total) * 100);
+
+      document.getElementById("barLearned").style.width = `${learnedPct}%`;
+      document.getElementById("barLearning").style.width = `${learningPct}%`;
+      document.getElementById("barWeak").style.width = `${weakPct}%`;
+      document.getElementById("progressDetailText").textContent =
+        `${learned} Öğrenildi • ${learning} Öğreniliyor • ${weak} Zayıf • ${newCount} Yeni`;
+      document.getElementById("progressPercentText").textContent = `%${learnedPct}`;
+
+      // Kapsam sayaçları
+      document.getElementById("countScopeWrong").textContent = wrongScopeCount;
+      document.getElementById("countScopeUnlearned").textContent = unlearned;
+
+      renderConfusedTop5();
+    }
+
+    function renderConfusedTop5() {
+      const container = document.getElementById("confusedListContainer");
+      const confused = SUBSTANCES
+        .map(sub => {
+          const p = appState.items[sub.id];
+          const score = (p.wrong * 3) + (p.status === "weak" ? 4 : 0) - Math.min(p.streak, 3);
+          return { sub, prog: p, score };
+        })
+        .filter(x => x.prog.wrong > 0)
+        .sort((a, b) => b.score - a.score || b.prog.wrong - a.prog.wrong)
+        .slice(0, 5);
+
+      if (confused.length === 0) {
+        container.innerHTML = `
+          <div style="font-size: 0.84rem; color: var(--text-muted); padding: 8px 4px;">
+            Henüz yanlış yapılan madde yok. Soru çözdükçe en çok karıştırdığın 5 madde burada listelenir.
+          </div>
+        `;
+        return;
+      }
+
+      container.innerHTML = confused.map(({ sub, prog }) => `
+        <div class="confused-item">
+          <div class="confused-left">
+            <span class="confused-formula chem-formula">${formatFormulaHTML(sub.formula)}</span>
+            <div class="confused-names">
+              <div class="confused-chem">${escapeHTML(sub.chemicalName)}</div>
+              <div class="confused-common">${
+                sub.commonName
+                  ? escapeHTML(sub.commonName)
+                  : (sub.oxideType ? `${escapeHTML(sub.oxideType)} oksit` : CATEGORY_LABELS[sub.category])
+              }</div>
+            </div>
+          </div>
+          <div class="confused-stat">${prog.wrong} Yanlış</div>
+        </div>
+      `).join("");
+    }
+
+    /********************************************************************
+     * 6. TEST / OTURUM AKIŞI
+     ********************************************************************/
+    function startQuizSession(customPool = null) {
+      const pool = customPool || getFilteredSubstances(selectedScope, selectedQMode);
+
+      if (pool.length === 0) {
+        if (selectedScope === "wrong") {
+          showToast("Henüz yanlış yaptığınız madde bulunmuyor!");
+        } else if (selectedScope === "unlearned") {
+          showToast("Tebrikler! Tüm maddeleri öğrendiniz!");
+        } else {
+          showToast("Seçilen kapsamda madde bulunamadı.");
+        }
+        return;
+      }
+
+      let totalQuestions = 20;
+      let orderedQueue = null;
+
+      if (customPool) {
+        totalQuestions = customPool.length;
+        orderedQueue = shuffleArray(customPool);
+      } else if (selectedLength === "10") {
+        totalQuestions = 10;
+      } else if (selectedLength === "20") {
+        totalQuestions = 20;
+      } else if (selectedLength === "full") {
+        // Tam tekrar modunda seçilen kapsamdaki her madde en az bir kez sorulur
+        orderedQueue = pool.slice().sort((a, b) => {
+          const wa = computeSelectionWeight(a, []);
+          const wb = computeSelectionWeight(b, []);
+          return wb - wa;
+        });
+        totalQuestions = orderedQueue.length;
+      }
+
+      currentSession = {
+        pool,
+        orderedQueue,
+        totalQuestions,
+        currentIndex: 0,
+        correctCount: 0,
+        wrongCount: 0,
+        recentIds: [],
+        mistakeSubstances: new Map(),
+        currentQuestion: null,
+        answered: false
+      };
+
+      showScreen("quizScreen");
+      loadNextQuestion();
+    }
+
+    function loadNextQuestion() {
+      if (!currentSession) return;
+
+      if (currentSession.currentIndex >= currentSession.totalQuestions) {
+        finishQuizSession();
+        return;
+      }
+
+      let targetSub;
+      if (currentSession.orderedQueue) {
+        targetSub = currentSession.orderedQueue[currentSession.currentIndex];
+      } else {
+        targetSub = pickWeightedSubstance(currentSession.pool, currentSession.recentIds);
+      }
+
+      const maxRecent = Math.min(6, Math.max(1, currentSession.pool.length - 1));
+      currentSession.recentIds.push(targetSub.id);
+      if (currentSession.recentIds.length > maxRecent) {
+        currentSession.recentIds.shift();
+      }
+
+      const q = buildQuestion(targetSub, selectedQMode);
+      currentSession.currentQuestion = q;
+      currentSession.answered = false;
+
+      renderCurrentQuestion();
+    }
+
+    function getStatusBadgeHTML(status) {
+      const label = STATUS_LABELS[status] || "Yeni";
+      return `<span class="status-badge status-${status}">${label}</span>`;
+    }
+
+    function renderCurrentQuestion() {
+      const s = currentSession;
+      const q = s.currentQuestion;
+      const prog = appState.items[q.sub.id];
+
+      document.getElementById("quizCounterText").textContent =
+        `Soru ${s.currentIndex + 1} / ${s.totalQuestions}`;
+      document.getElementById("quizSessionCorrect").textContent = `✓ ${s.correctCount}`;
+      document.getElementById("quizSessionWrong").textContent = `✗ ${s.wrongCount}`;
+
+      const pct = Math.round((s.currentIndex / s.totalQuestions) * 100);
+      document.getElementById("quizProgressBar").style.width = `${pct}%`;
+
+      document.getElementById("qCategoryTag").textContent = CATEGORY_LABELS[q.sub.category].toUpperCase();
+      const statusBadge = document.getElementById("qStatusBadge");
+      statusBadge.className = `status-badge status-${prog.status}`;
+      statusBadge.textContent = STATUS_LABELS[prog.status];
+
+      document.getElementById("qHighlightBox").innerHTML = q.highlightHTML;
+      document.getElementById("qStemText").innerHTML = formatFormulaHTML(escapeHTML(q.stem));
+
+      const letters = ["A", "B", "C", "D", "E"];
+      const optionsContainer = document.getElementById("optionsContainer");
+      optionsContainer.innerHTML = q.options.map((opt, idx) => `
+        <button type="button" class="option-btn" data-idx="${idx}">
+          <span class="option-letter">${letters[idx]}</span>
+          <span class="option-text">${opt.isHTML ? opt.text : escapeHTML(opt.text)}</span>
+        </button>
+      `).join("");
+
+      optionsContainer.querySelectorAll(".option-btn").forEach(btn => {
+        btn.addEventListener("click", () => {
+          handleSelectOption(Number(btn.getAttribute("data-idx")));
+        });
+      });
+
+      const feedbackBox = document.getElementById("feedbackBox");
+      feedbackBox.className = "feedback-box";
+      document.getElementById("skipQuestionBtn").style.display = "flex";
+      document.getElementById("nextQuestionBtn").style.display = "none";
+    }
+
+    function handleSelectOption(selectedIdx) {
+      if (!currentSession || currentSession.answered) return;
+      currentSession.answered = true;
+
+      const q = currentSession.currentQuestion;
+      const isSkipped = selectedIdx === -1;
+      const isCorrect = !isSkipped && q.options[selectedIdx]?.isCorrect === true;
+
+      const optionBtns = document.querySelectorAll("#optionsContainer .option-btn");
+      optionBtns.forEach((btn, idx) => {
+        btn.disabled = true;
+        if (q.options[idx].isCorrect) {
+          btn.classList.add("correct");
+        } else if (idx === selectedIdx && !isCorrect) {
+          btn.classList.add("wrong");
+        }
+      });
+
+      const updateResult = recordAnswer(q.sub.id, q.qType, isCorrect);
+
+      if (isCorrect) {
+        currentSession.correctCount += 1;
+      } else {
+        currentSession.wrongCount += 1;
+        currentSession.mistakeSubstances.set(q.sub.id, q.sub);
+      }
+
+      document.getElementById("quizSessionCorrect").textContent = `✓ ${currentSession.correctCount}`;
+      document.getElementById("quizSessionWrong").textContent = `✗ ${currentSession.wrongCount}`;
+
+      // Üstteki durum rozetini anında güncelle
+      const statusBadge = document.getElementById("qStatusBadge");
+      statusBadge.className = `status-badge status-${updateResult.newStatus}`;
+      statusBadge.textContent = STATUS_LABELS[updateResult.newStatus];
+
+      // Açıklama & Madde Kartını göster (Formül, Kimyasal Ad, Yaygın Ad birlikte)
+      const feedbackBox = document.getElementById("feedbackBox");
+      feedbackBox.className = `feedback-box visible ${isCorrect ? "is-correct" : "is-wrong"}`;
+
+      const feedbackTitle = document.getElementById("feedbackTitle");
+      feedbackTitle.className = `feedback-title ${isCorrect ? "correct-text" : "wrong-text"}`;
+
+      const statusTextEl = document.getElementById("feedbackStatusText");
+      if (isCorrect) {
+        statusTextEl.textContent = "✓ Doğru Cevap!";
+      } else if (isSkipped) {
+        statusTextEl.textContent = "⏭️ Soru Geçildi (Yanlış Sayıldı)";
+      } else {
+        statusTextEl.textContent = "✗ Yanlış Cevap!";
+      }
+
+      let levelNote = `Düzey: ${STATUS_LABELS[updateResult.newStatus]} (Seri: ${updateResult.streak})`;
+      if (updateResult.newStatus === "learning" && updateResult.streak >= 3) {
+        levelNote += " • Farklı soru türünde de doğru yapınca Öğrenildi olur";
+      }
+      document.getElementById("feedbackLevelUpdate").textContent = levelNote;
+
+      const sub = q.sub;
+      let extraRow = "";
+      if (sub.category === "oksit" && sub.oxideType) {
+        extraRow = `
+          <div class="sum-label">Oksit Türü:</div>
+          <div class="sum-val">${escapeHTML(sub.oxideType)} oksit</div>
+        `;
+      }
+
+      document.getElementById("feedbackTable").innerHTML = `
+        <div class="sum-label">Formülü:</div>
+        <div class="sum-val chem-formula">${formatFormulaHTML(sub.formula)}</div>
+        <div class="sum-label">Kimyasal Adı:</div>
+        <div class="sum-val">${escapeHTML(sub.chemicalName)}</div>
+        <div class="sum-label">Yaygın Adı:</div>
+        <div class="sum-val">${sub.commonName ? escapeHTML(sub.commonName) : "— (Yaygın adı yok)"}</div>
+        ${extraRow}
+      `;
+
+      document.getElementById("feedbackTip").innerHTML = `💡 <b>Ezber İpucu:</b> ${escapeHTML(sub.tip)}`;
+
+      document.getElementById("skipQuestionBtn").style.display = "none";
+      const nextBtn = document.getElementById("nextQuestionBtn");
+      nextBtn.style.display = "flex";
+      nextBtn.innerHTML =
+        currentSession.currentIndex + 1 >= currentSession.totalQuestions
+          ? `<span>Sonuçları Gör →</span>`
+          : `<span>Sonraki Soru →</span>`;
+    }
+
+    function finishQuizSession() {
+      const s = currentSession;
+      const total = s.correctCount + s.wrongCount;
+      const rate = total > 0 ? Math.round((s.correctCount / total) * 100) : 0;
+
+      document.getElementById("quizProgressBar").style.width = "100%";
+      document.getElementById("sumCorrect").textContent = s.correctCount;
+      document.getElementById("sumWrong").textContent = s.wrongCount;
+      document.getElementById("sumRate").textContent = `%${rate}`;
+      document.getElementById("summaryEmoji").textContent = rate >= 85 ? "🏆" : rate >= 60 ? "👍" : "💪";
+
+      const mistakes = Array.from(s.mistakeSubstances.values());
+      const practiceMistakesBtn = document.getElementById("practiceSessionMistakesBtn");
+      const mistakesCard = document.getElementById("sessionMistakesCard");
+      const mistakesList = document.getElementById("sessionMistakesList");
+
+      if (mistakes.length > 0) {
+        practiceMistakesBtn.style.display = "flex";
+        practiceMistakesBtn.innerHTML = `<span>⚠️ Bu Testteki Yanlışlarımı Çöz (${mistakes.length})</span>`;
+        mistakesCard.style.display = "block";
+        mistakesList.innerHTML = mistakes.map(sub => `
+          <div class="confused-item">
+            <div class="confused-left">
+              <span class="confused-formula chem-formula">${formatFormulaHTML(sub.formula)}</span>
+              <div class="confused-names">
+                <div class="confused-chem">${escapeHTML(sub.chemicalName)}</div>
+                <div class="confused-common">${
+                  sub.commonName ? escapeHTML(sub.commonName) : "Yaygın adı yok"
+                }</div>
+              </div>
+            </div>
+            <span class="status-badge status-weak">Zayıf</span>
+          </div>
+        `).join("");
+      } else {
+        practiceMistakesBtn.style.display = "none";
+        mistakesCard.style.display = "none";
+      }
+
+      updateHomeDashboard();
+      showScreen("summaryScreen");
+    }
+
+    /********************************************************************
+     * 7. BÜTÜN MADDELERİN LİSTESİ EKRANI
+     ********************************************************************/
+    let listFilterCat = "all";
+    let listFilterStatus = "all";
+    let listSearchQuery = "";
+
+    function renderAllSubstancesList() {
+      const container = document.getElementById("allSubstancesContainer");
+      const q = listSearchQuery.trim().toLocaleLowerCase("tr-TR");
+
+      const filtered = SUBSTANCES.filter(sub => {
+        const prog = appState.items[sub.id];
+        if (listFilterCat !== "all" && sub.category !== listFilterCat) return false;
+        if (listFilterStatus !== "all" && prog.status !== listFilterStatus) return false;
+
+        if (q) {
+          const hay = [
+            sub.formula,
+            sub.formula.replace(/[₀₁₂₃₄₅₆₇₈₉]/g, c => SUBSCRIPT_MAP[c]),
+            sub.chemicalName,
+            sub.commonName || "",
+            sub.oxideType || ""
+          ].join(" ").toLocaleLowerCase("tr-TR");
+          if (!hay.includes(q)) return false;
+        }
+        return true;
+      });
+
+      if (filtered.length === 0) {
+        container.innerHTML = `
+          <div class="card" style="text-align: center; color: var(--text-muted);">
+            Arama veya filtreye uygun madde bulunamadı.
+          </div>
+        `;
+        return;
+      }
+
+      container.innerHTML = filtered.map(sub => {
+        const prog = appState.items[sub.id];
+        const fDone = (prog.byType.formula_to_name?.streak || 0) >= 1;
+        const nDone = (prog.byType.name_to_formula?.streak || 0) >= 1;
+        const cDone = (prog.byType.common_to_chemical?.streak || 0) >= 1;
+        const oDone = (prog.byType.oxide_type?.streak || 0) >= 1;
+
+        let extraPill = "";
+        if (sub.commonName) {
+          extraPill = `<span class="type-dot ${cDone ? "done" : ""}">Yaygın Ad ${cDone ? "✓" : ""}</span>`;
+        }
+        if (sub.category === "oksit") {
+          extraPill += `<span class="type-dot ${oDone ? "done" : ""}">Oksit Türü ${oDone ? "✓" : ""}</span>`;
+        }
+
+        return `
+          <div class="substance-row">
+            <div class="substance-row-top">
+              <div>
+                <span class="substance-row-formula chem-formula">${formatFormulaHTML(sub.formula)}</span>
+                <div class="substance-row-chem">${escapeHTML(sub.chemicalName)}</div>
+                <div class="substance-row-common">
+                  ${sub.commonName ? `Yaygın adı: ${escapeHTML(sub.commonName)}` : "Yaygın adı yok"}
+                  ${sub.oxideType ? ` • <b>${escapeHTML(sub.oxideType)} Oksit</b>` : ""}
+                </div>
+              </div>
+              <div style="text-align: right; flex-shrink: 0;">
+                ${getStatusBadgeHTML(prog.status)}
+                <div style="font-size: 0.72rem; color: var(--text-muted); margin-top: 5px;">
+                  ${CATEGORY_LABELS[sub.category]}
+                </div>
+              </div>
+            </div>
+            <div class="substance-row-bottom">
+              <div class="type-dots">
+                <span class="type-dot ${fDone ? "done" : ""}">Formül→İsim ${fDone ? "✓" : ""}</span>
+                <span class="type-dot ${nDone ? "done" : ""}">İsim→Formül ${nDone ? "✓" : ""}</span>
+                ${extraPill}
+              </div>
+              <div>Doğru: <b>${prog.correct}</b> • Yanlış: <b>${prog.wrong}</b></div>
+            </div>
+          </div>
+        `;
+      }).join("");
+    }
+
+    /********************************************************************
+     * 8. JSON YEDEKLEME, GERİ YÜKLEME VE SIFIRLAMA
+     ********************************************************************/
+    function exportBackupJSON() {
+      const dataStr = JSON.stringify(appState, null, 2);
+      const blob = new Blob([dataStr], { type: "application/json" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = `tyt-kimya-ezber-yedek-${getLocalDateKey()}.json`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+      showToast("Yedek dosyası indirildi!");
+    }
+
+    function applyImportedJSON(rawText) {
+      try {
+        const parsed = JSON.parse(rawText);
+        if (!parsed || typeof parsed !== "object" || !parsed.items) {
+          showToast("Geçersiz yedek formatı!");
+          return false;
+        }
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(parsed));
+        appState = loadState();
+        applyTheme(appState.theme);
+        updateHomeDashboard();
+        showToast("Yedek başarıyla geri yüklendi!");
+        return true;
+      } catch (err) {
+        showToast("JSON verisi okunamadı!");
+        return false;
+      }
+    }
+
+    /********************************************************************
+     * 9. ETKİLEŞİM VE EVENT LISTENER BAĞLANTILARI
+     ********************************************************************/
+    document.addEventListener("DOMContentLoaded", () => {
+      applyTheme(appState.theme);
+      updateHomeDashboard();
+
+      // Üst bar butonları
+      document.getElementById("brandHomeBtn").addEventListener("click", () => {
+        updateHomeDashboard();
+        showScreen("homeScreen");
+      });
+
+      document.getElementById("themeToggleBtn").addEventListener("click", () => {
+        applyTheme(appState.theme === "dark" ? "light" : "dark");
+      });
+
+      document.getElementById("openListBtn").addEventListener("click", () => {
+        renderAllSubstancesList();
+        showScreen("listScreen");
+      });
+
+      document.getElementById("openListBottomBtn").addEventListener("click", () => {
+        renderAllSubstancesList();
+        showScreen("listScreen");
+      });
+
+      document.getElementById("closeListBtn").addEventListener("click", () => {
+        updateHomeDashboard();
+        showScreen("homeScreen");
+      });
+
+      // Soru modu seçimi (A, B, C, D)
+      document.querySelectorAll("#questionModeGrid .mode-card").forEach(btn => {
+        btn.addEventListener("click", () => {
+          document.querySelectorAll("#questionModeGrid .mode-card").forEach(b => b.classList.remove("selected"));
+          btn.classList.add("selected");
+          selectedQMode = btn.getAttribute("data-qmode");
+        });
+      });
+
+      // Kapsam seçimi
+      document.querySelectorAll("#scopeGrid .chip-btn").forEach(btn => {
+        btn.addEventListener("click", () => {
+          document.querySelectorAll("#scopeGrid .chip-btn").forEach(b => b.classList.remove("selected"));
+          btn.classList.add("selected");
+          selectedScope = btn.getAttribute("data-scope");
+        });
+      });
+
+      // Soru sayısı / uzunluk seçimi
+      document.querySelectorAll("#lengthGrid .chip-btn").forEach(btn => {
+        btn.addEventListener("click", () => {
+          document.querySelectorAll("#lengthGrid .chip-btn").forEach(b => b.classList.remove("selected"));
+          btn.classList.add("selected");
+          selectedLength = btn.getAttribute("data-length");
+        });
+      });
+
+      // Çalışmayı başlat
+      document.getElementById("startQuizBtn").addEventListener("click", () => {
+        startQuizSession();
+      });
+
+      // Quiz ekranı kontrolleri
+      document.getElementById("quitQuizBtn").addEventListener("click", () => {
+        updateHomeDashboard();
+        showScreen("homeScreen");
+      });
+
+      document.getElementById("skipQuestionBtn").addEventListener("click", () => {
+        handleSelectOption(-1);
+      });
+
+      document.getElementById("nextQuestionBtn").addEventListener("click", () => {
+        if (!currentSession) return;
+        currentSession.currentIndex += 1;
+        loadNextQuestion();
+      });
+
+      // Sonuç ekranı kontrolleri
+      document.getElementById("repeatSessionBtn").addEventListener("click", () => {
+        startQuizSession();
+      });
+
+      document.getElementById("practiceSessionMistakesBtn").addEventListener("click", () => {
+        if (!currentSession) return;
+        const mistakes = Array.from(currentSession.mistakeSubstances.values());
+        if (mistakes.length > 0) {
+          startQuizSession(mistakes);
+        }
+      });
+
+      document.getElementById("backHomeFromSummaryBtn").addEventListener("click", () => {
+        updateHomeDashboard();
+        showScreen("homeScreen");
+      });
+
+      // Liste ekranı filtre ve arama
+      document.getElementById("listSearchInput").addEventListener("input", e => {
+        listSearchQuery = e.target.value;
+        renderAllSubstancesList();
+      });
+
+      document.querySelectorAll("#listCategoryFilter .small-pill").forEach(btn => {
+        btn.addEventListener("click", () => {
+          document.querySelectorAll("#listCategoryFilter .small-pill").forEach(b => b.classList.remove("active"));
+          btn.classList.add("active");
+          listFilterCat = btn.getAttribute("data-cat");
+          renderAllSubstancesList();
+        });
+      });
+
+      document.querySelectorAll("#listStatusFilter .small-pill").forEach(btn => {
+        btn.addEventListener("click", () => {
+          document.querySelectorAll("#listStatusFilter .small-pill").forEach(b => b.classList.remove("active"));
+          btn.classList.add("active");
+          listFilterStatus = btn.getAttribute("data-st");
+          renderAllSubstancesList();
+        });
+      });
+
+      // Yedekleme & Geri Yükleme
+      document.getElementById("exportJsonBtn").addEventListener("click", exportBackupJSON);
+
+      const restoreModal = document.getElementById("restoreModal");
+      document.getElementById("importJsonBtn").addEventListener("click", () => {
+        document.getElementById("pasteJsonArea").value = "";
+        restoreModal.classList.add("open");
+      });
+
+      document.getElementById("cancelRestoreBtn").addEventListener("click", () => {
+        restoreModal.classList.remove("open");
+      });
+
+      document.getElementById("selectJsonFileBtn").addEventListener("click", () => {
+        document.getElementById("importFileInput").click();
+      });
+
+      document.getElementById("copyJsonTextBtn").addEventListener("click", async () => {
+        const jsonStr = JSON.stringify(appState);
+        document.getElementById("pasteJsonArea").value = jsonStr;
+        try {
+          await navigator.clipboard.writeText(jsonStr);
+          showToast("Yedek metni panoya kopyalandı!");
+        } catch (err) {
+          document.getElementById("pasteJsonArea").select();
+          showToast("Yedek metni kutuya yazıldı, kopyalayabilirsiniz.");
+        }
+      });
+
+      document.getElementById("importFileInput").addEventListener("change", e => {
+        const file = e.target.files?.[0];
+        if (!file) return;
+        const reader = new FileReader();
+        reader.onload = ev => {
+          if (applyImportedJSON(ev.target.result)) {
+            restoreModal.classList.remove("open");
+          }
+        };
+        reader.readAsText(file);
+        e.target.value = "";
+      });
+
+      document.getElementById("applyPasteRestoreBtn").addEventListener("click", () => {
+        const raw = document.getElementById("pasteJsonArea").value.trim();
+        if (!raw) {
+          showToast("Lütfen JSON metnini yapıştırın veya dosya seçin.");
+          return;
+        }
+        if (applyImportedJSON(raw)) {
+          restoreModal.classList.remove("open");
+        }
+      });
+
+      // İstatistikleri Sıfırlama Onay Modalı
+      const resetModal = document.getElementById("resetModal");
+      document.getElementById("resetStatsBtn").addEventListener("click", () => {
+        resetModal.classList.add("open");
+      });
+
+      document.getElementById("cancelResetBtn").addEventListener("click", () => {
+        resetModal.classList.remove("open");
+      });
+
+      document.getElementById("confirmResetBtn").addEventListener("click", () => {
+        const currentTheme = appState.theme;
+        appState = createDefaultState();
+        appState.theme = currentTheme;
+        saveState();
+        updateHomeDashboard();
+        resetModal.classList.remove("open");
+        showToast("Tüm istatistikler sıfırlandı.");
+      });
+    });
+  </script>
+</body>
+</html>
